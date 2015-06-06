@@ -6,16 +6,16 @@ angular.module('timerComponent', [])
       replace: true,
       scope: {},
       template: '<div id="timer-container">' +
-                ' <div id="timer-time">{{ timer }}</div>' +
-                ' <button id="timer-button" ng-click="toggle()">{{ buttonText | uppercase}}</button>' +
-                ' <button id="timer-refresh" ng-click="reset()">RESET</button>' +
+                '   <div id="timer-time">{{ timer | time }}</div>' +
+                '   <button id="timer-button" ng-click="toggle()">{{ buttonText | uppercase}}</button>' +
+                '   <button id="timer-reset" ng-click="reset()"></button>' +
                 '</div>',
       //   
       link: function(scope, element, attrs) {
          var time, startTime, stopTime, intervalId, timeoutId;
          var interval = 1000;
          var remTime  = interval;
-         //
+         
          function timerOneUp() {
             scope.timer += 1;
             scope.$apply();
@@ -29,7 +29,7 @@ angular.module('timerComponent', [])
             scope.state      = state;
             scope.buttonText = text;
          }
-         //
+
          scope.timer = 0;
          scope.state = 'initial';
          scope.buttonText = 'start';
@@ -65,6 +65,28 @@ angular.module('timerComponent', [])
             scope.timer = 0;
          };
       }
+   }
+})
+
+.filter('time', function() {
+   return function(input) {
+      var input = input || '00';
+      var ss = parseInt(input % 60);
+      var mm = parseInt((input / 60) % 60);
+      var hh = parseInt((input / 3600) % 24);
+
+      function pad(number, thickness) {
+         var number    = number    || 0;
+         var thickness = thickness || 2;
+         var padNeeded = thickness - number.toString().length;
+         var pad = '';
+         for (var i = 0; i < padNeeded; i++) {
+            pad += '0';
+         }
+         return pad + number;
+      }
+
+      return  pad(hh, 2) + ':' + pad(mm, 2) + ':' + pad(ss, 2);
    }
 })
 
