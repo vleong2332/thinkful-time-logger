@@ -55,6 +55,7 @@
 input[name='new-date'] {
    display: block;
    margin-bottom: 0.75em;
+   line-height: normal;
 }
 #change-date-yes, #change-date-no {
    padding: 0.5em 0.8em;

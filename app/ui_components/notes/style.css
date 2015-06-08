@@ -1,0 +1,56 @@
+@font-face {
+   font-family: 'Lato Bold';
+   src: url('lato-bold-webfont.woff') format('woff');
+}
+@font-face {
+   font-family: 'Josefin Sans';
+   src: url('josefinsans-regular-webfont.woff') format('woff');
+}
+
+#notes-wrapper {
+   width: 800px;
+   position: relative;
+   font-family: 'Josefin Sans', 'Helvetica Neue', Helvetica;
+}
+#notes-wrapper::after {
+   content: '';
+   display: block;
+   clear: both;
+}
+#notes-wrapper h1 {
+   font-family: 'Lato Bold', 'Helvetica Neue', Helvetica;
+   font-size: 1.5em;
+}
+#notes-wrapper .btn-toolbar {
+   padding: 0.5em 0.5em;
+   background-color: #F0F0F0;
+   font-family: 'Lato Bold', 'Helvetica Neue', Helvetica;
+}
+#notes-wrapper .btn-group {
+   margin-bottom: 0.2em;
+}
+/*#notes-wrapper .btn-group:last-child {
+   position: absolute;
+   bottom: -30px;
+   right: -1px;
+   width: 220px;
+}
+#notes-wrapper .btn-group:last-child div {
+   display: inline-block;
+}*/
+#notes-wrapper .btn {
+   padding: 3px 6px;
+}
+#notes-wrapper .ta-editor.ta-html, .ta-scroll-window.form-control {
+   min-height: 100px;
+   max-height: 420px;
+   overflow: auto;
+   font-family: inherit;
+   font-size: 120%;
+}
+#notes-wrapper .ta-scroll-window > .ta-bind {
+   min-height: 100px;
+}
+div[id^='taTextElement'].placeholder-text::before {
+   color: #BABABA;
+}
