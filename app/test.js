@@ -1,1 +1,4 @@
-angular.module('thinkfulTimeLogger', ['timerComponent']);
+angular.module('thinkfulTimeLogger', ['timerComponent', 'dateComponent'])
+.controller('defaultCtrl', function($scope) {
+   console.log($scope);
+})
