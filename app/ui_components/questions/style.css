@@ -11,3 +11,25 @@
    font-family: 'Lato Bold', 'Helvetica Neue', Helvetica;
    font-size: 1.5em;
 }
+#questions-wrapper ul {
+   padding: 0;
+   list-style: none;
+}
+#questions-wrapper div.question {
+   display: block;
+   width: 400px;
+   height: auto;
+   resize: none;
+   margin-bottom: 0.5em;
+   border: none;
+   padding: 0.25em;
+   font-family: 'Josefin Sans', 'Helvetica Neue', Helvetica;
+}
+#questions-wrapper div:focus {
+   background-color: #EFEFEF;
+}
+#questions-wrapper div[placeholder]:empty:before {
+   content: attr(placeholder);
+   color: #BABABA;
+   cursor: pointer;
+}
