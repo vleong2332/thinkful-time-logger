@@ -2,7 +2,6 @@ angular.module('ghPushesComponent', [])
 
 .factory('getGithubPushes', function($rootScope, $http, $q) {
    return function(username) {
-      $rootScope.refreshing = true;
       var defer = $q.defer();
       $http({
          url: 'https://api.github.com/users/' + username + '/events',
@@ -14,7 +13,6 @@ angular.module('ghPushesComponent', [])
             defer.resolve(data);
          })
          .error(function(data) {
-            $rootScope.refreshing = false;
             console.log('Unable to reach GitHub for events data');
          });
       return defer.promise;
@@ -29,7 +27,7 @@ angular.module('ghPushesComponent', [])
       template: '<div id="gh-pushes-wrapper">' +
                 '   <div id="gh-pushes-head">' +
                 '      <h1>GitHub Pushes</h1>' +
-                '      <button id="refresh-button" ng-click="refresh" ng-class="{refreshing: refreshing}"></button>' +
+                '      <button id="refresh-button" ng-click="refresh()" ng-class="{refreshing: refreshing}"></button>' +
                 '      <input name="gh-username" type="text" ng-model="ghUsername" placeholder="GitHub Username" />' +
                 '   </div>' +
                 '   <div id="gh-pushes-body">' +
@@ -52,6 +50,7 @@ angular.module('ghPushesComponent', [])
          var input = element.find('input')[0];
          var refreshInterval = 180000;
          function githubRequest(username) {
+            console.log ('making request');
             getGithubPushes(username).then(function(result) {
                var cooked = [];
 
@@ -72,7 +71,7 @@ angular.module('ghPushesComponent', [])
             });
          }
 
-         scope.refresh = function() { githubRequest(scope.ghUsername); }
+         scope.refresh = function() { console.log('refresh'); githubRequest(scope.ghUsername); }
 
          githubRequest(scope.ghUsername);
          setInterval(function () { githubRequest(scope.ghUsername); }, refreshInterval);
