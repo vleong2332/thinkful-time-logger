@@ -9,8 +9,6 @@ angular.module('dateComponent', [])
    };
 })
 
-
-
 //------------------------------------
 
 .directive('vlDate', function(dateData) {
@@ -61,7 +59,7 @@ angular.module('dateComponent', [])
             console.log('watched');
             dateData.date = newValue.date;
          });
-         
+
       } // end of link
    } // end of return
 }) // end of directive

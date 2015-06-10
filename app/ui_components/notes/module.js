@@ -1,11 +1,21 @@
 angular.module('notesComponent', ['textAngular'])
 
+//---------------------------------------------
+
+.factory('notesData', function() {
+  return {
+    htmlText: ''
+  }
+})
+
+//---------------------------------------------
+
 .config(function($provide) {
    $provide.decorator('taOptions', ['$delegate', function(taOptions){
       // $delegate is the taOptions we are decorating
       // here we override the default toolbars and classes specified in taOptions.
       taOptions.toolbar = [
-         ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'quote'],
+         ['h1', 'h2', 'h3', 'h4', 'p', 'pre', 'quote'],
          ['bold', 'italics', 'underline', 'ul', 'ol', 'redo', 'undo', 'clear'],
          ['justifyLeft','justifyCenter','justifyRight'],
          ['html', 'insertImage', 'insertLink']
@@ -14,7 +24,9 @@ angular.module('notesComponent', ['textAngular'])
    }]);
 })
 
-.directive('vlNotes', function() {
+//---------------------------------------------
+
+.directive('vlNotes', function(notesData) {
    return {
       restict: 'EA',
       replace: true,
@@ -23,7 +35,14 @@ angular.module('notesComponent', ['textAngular'])
                 '   <h1>Notes</h1>' +
                 '   <text-angular ng-model="htmlVariable" name="notes"' +
                 '    placeholder="Write down important notes here"></text-angular>' +
-                '</div>'
+                '</div>',
+      controller: function($scope) {
+         $scope.htmlVariable = "";
+         $scope.$watch('htmlVariable', function(newValue) {
+            console.log('text changed');
+            notesData.htmlText = newValue;
+         });
+      }
    }
 })
 
