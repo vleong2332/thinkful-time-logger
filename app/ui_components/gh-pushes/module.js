@@ -62,6 +62,8 @@ angular.module('ghPushesComponent', [])
                   pushes: cooked
                };
 
+               console.log(scope.data.pushes);
+
                if (scope.data.pushes.length == 0 && scope.ghUsername != "") { scope.noData = true; }
                else { scope.noData = false; }
             },
