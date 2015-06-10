@@ -7,7 +7,7 @@ angular.module('ghPushesComponent', [])
       $http({
          url: 'https://api.github.com/users/' + username + '/events',
          method: 'GET',
-         cache: true
+         cache: false
       })
          .success(function(data) {
             console.log('success', data);
