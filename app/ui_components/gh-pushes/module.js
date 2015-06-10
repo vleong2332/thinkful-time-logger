@@ -59,6 +59,7 @@ angular.module('ghPushesComponent', [])
                   if (value.type == "PushEvent") { this.push(value); }
                }, cooked);
 
+               scope.data = {};
                scope.data = {
                   pushes: cooked
                };
