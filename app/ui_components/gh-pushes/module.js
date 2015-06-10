@@ -2,6 +2,7 @@ angular.module('ghPushesComponent', [])
 
 .factory('getGithubPushes', function($rootScope, $http, $q) {
    return function(username) {
+      console.log ('making request');
       var defer = $q.defer();
       $http({
          url: 'https://api.github.com/users/' + username + '/events',
@@ -49,8 +50,8 @@ angular.module('ghPushesComponent', [])
       link: function(scope, element, attrs) {
          var input = element.find('input')[0];
          var refreshInterval = 180000;
+
          function githubRequest(username) {
-            console.log ('making request');
             getGithubPushes(username).then(function(result) {
                var cooked = [];
 
