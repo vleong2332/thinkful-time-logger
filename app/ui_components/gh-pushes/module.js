@@ -10,7 +10,6 @@ angular.module('ghPushesComponent', [])
          cache: false
       })
          .success(function(data) {
-            console.log('success', data);
             defer.resolve(data);
          })
          .error(function(data) {
