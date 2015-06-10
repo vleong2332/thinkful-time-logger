@@ -3,7 +3,6 @@ angular.module('timerComponent', [])
 //------------------------------------
 
 .factory('timerData', function() {
-   console.log('service is invoked');
    return {
       totalTime: 0,
       details: []
@@ -18,7 +17,7 @@ angular.module('timerComponent', [])
       replace: true,
       scope: {},
       templateUrl: './ui_components/timer/template.html',
-      //  
+      // 
       controller: function($scope, $element, $attrs) {
          // Scope initialization
          $scope.state       = 'initial';
@@ -33,6 +32,7 @@ angular.module('timerComponent', [])
                                    $scope.showConfirm = !$scope.showConfirm;
                                 };
       },
+      //
       link: function(scope, element, attrs) {
          // Private variables
          var time, startTime, stopTime, intervalId, timeoutId;

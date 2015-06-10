@@ -1,0 +1,6 @@
+<div id="date-container">
+   <p>Today is 
+      <span id="date" ng-click="toggleChangePanel()" ng-class="{changing: changePanelView}">{{ data.date | date: fullDate }}</span>
+   </p>
+   <vl-date-change ng-show="changePanelView"></vl-date-change>
+</div>

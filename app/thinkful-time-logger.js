@@ -6,7 +6,7 @@ angular.module('thinkfulTimeLogger', ['firebase', 'timerComponent', 'dateCompone
    var ref = new Firebase(FIREBASE_DB);
 })
 
-.controller('rootCtrl', function($scope, $firebaseAuth, $firebaseObject, FIREBASE_DB, $timeout, timerData) {
+.controller('rootCtrl', function($scope, $firebaseAuth, $firebaseObject, FIREBASE_DB, timerData, dateData) {
    var ref = new Firebase(FIREBASE_DB);
 
    $scope.authObj  = $firebaseAuth(ref);
@@ -26,7 +26,8 @@ angular.module('thinkfulTimeLogger', ['firebase', 'timerComponent', 'dateCompone
    }
 
    $scope.logSvcs = function() {
-      console.log(timerData);
+      // console.log(timerData);
+      console.log(dateData);
    }
 })
 

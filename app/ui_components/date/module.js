@@ -1,27 +1,45 @@
 angular.module('dateComponent', [])
 
-.directive('vlDate', function() {
+//------------------------------------
+
+.factory('dateData', function() {
+   console.log('service is invoked');
+   return {
+      date: ''
+   };
+})
+
+
+
+//------------------------------------
+
+.directive('vlDate', function(dateData) {
    return {
       restrict: 'EA',
       replace: true,
       scope: {},
-      template: '<div id="date-container">' +
-                '   <p>Today is <span id="date" ng-click="toggleChangePanel()" ng-class="{changing: changePanelView}">{{ data.date | date: fullDate }}</span></p>' +
-                '   <vl-date-change ng-show="changePanelView"></vl-date-change>' +
-                '</div>',
+      templateUrl: './ui_components/date/template.html',
+      //
       controller: function($scope, $element, $attrs) {
+         // Scope initialization
          $scope.changePanelView = false;
+
+         // Scope API
          $scope.toggleChangePanel = function() {
-            $scope.changePanelView = !$scope.changePanelView;
-         }
+                                       $scope.changePanelView = !$scope.changePanelView;
+                                    }
       },
+      //
       link: function(scope, element, attrs) {
+         // Private variables
          var d = new Date();
          var dd = d.getDate();
          var mm = d.getMonth() + 1;
          var yy = d.getFullYear();
          var today = yy + '-' + pad(mm) +'-' + pad(dd);
-         //
+
+
+         // Private functions
          function pad(number, thickness) {
             var number    = number    || 0;
             var thickness = thickness || 2;
@@ -32,31 +50,37 @@ angular.module('dateComponent', [])
             }
             return pad + number;
          }
-         //
+
+         // Public variables
          scope.data = {
-            date: today
-         };
-      }
-   }
-})
+                         date: today
+                      };
+
+         // Event handler
+         scope.$watchCollection('data', function(newValue) {
+            console.log('watched');
+            dateData.date = newValue.date;
+         });
+         
+      } // end of link
+   } // end of return
+}) // end of directive
+
+//------------------------------------
+
 
 .directive('vlDateChange', function() {
    return {
       restrict: 'EA',
       replace: true,
       scope: true,
-      template: '<div id="change-date-container">' +
-                '   <p>Change to </p>' +
-                '   <input name="new-date" type="date" value="{{ data.date }}" />' +
-                '   <button id="change-date-yes" reset="reset" ng-click="changeDate(); toggleChangePanel();">Yes</button>' +
-                '   <button id="change-date-no" ng-click="toggleChangePanel()">No</button>' +
-                '</div>',
+      templateUrl: './ui_components/date/date_change_templ.html',
       controller: function($scope, $element, $attrs) {
          $scope.changeDate = function() {
             $scope.data.date = $element.find('input')[0].value;
          };
       }
    }
-})
+}) // end of directive
 
-;
+; // end of module
