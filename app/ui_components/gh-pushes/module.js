@@ -10,7 +10,7 @@ angular.module('ghPushesComponent', [])
          cache: true
       })
          .success(function(data) {
-            $rootScope.refreshing = false;
+            console.log('success', data);
             defer.resolve(data);
          })
          .error(function(data) {
