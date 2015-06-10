@@ -49,7 +49,7 @@ angular.module('ghPushesComponent', [])
       },
       link: function(scope, element, attrs) {
          var input = element.find('input')[0];
-         var refreshInterval = 1800;
+         var refreshInterval = 18000;
 
          function githubRequest(username) {
             getGithubPushes(username).then(function(result) {
