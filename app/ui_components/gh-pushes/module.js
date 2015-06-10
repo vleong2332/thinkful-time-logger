@@ -75,7 +75,7 @@ angular.module('ghPushesComponent', [])
 
          githubRequest(scope.ghUsername);
 
-         setInterval(function () { githubRequest(scope.ghUsername); }, refreshInterval);
+         setInterval(function () { if(scope.ghUsername != "") githubRequest(scope.ghUsername); }, refreshInterval);
 
          angular.element(input).on('blur keypress', function(event) {
             // Exit if keypress is not "Enter"
