@@ -1,0 +1,6 @@
+<div id="timer-container">
+   <div id="timer-time">{{ data.totalTime | time }}</div>
+   <button id="timer-button" ng-click="toggleStart()">{{ buttonText | uppercase}}</button>
+   <button id="timer-reset" ng-click="toggleConfirm()"></button>
+   <timer-reset-confirm ng-show="showConfirm"></timer-reset-confirm>
+</div>

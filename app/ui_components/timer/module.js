@@ -1,35 +1,45 @@
 angular.module('timerComponent', [])
 
-.directive('vlTimer', function() {
+//------------------------------------
+
+.factory('timerData', function() {
+   console.log('service is invoked');
+   return {
+      totalTime: 0,
+      details: []
+   };
+})
+
+//------------------------------------
+
+.directive('vlTimer', function(timerData) {
    return {
       restict: 'EA',
       replace: true,
       scope: {},
-      template: '<div id="timer-container">' +
-                '   <div id="timer-time">{{ data.totalTime | time }}</div>' +
-                '   <button id="timer-button" ng-click="toggleStart()">{{ buttonText | uppercase}}</button>' +
-                '   <button id="timer-reset" ng-click="toggleConfirm()"></button>' +
-                '   <timer-reset-confirm ng-show="showConfirm"></timer-reset-confirm>' +
-                '</div>',
+      templateUrl: './ui_components/timer/template.html',
       //  
       controller: function($scope, $element, $attrs) {
-         $scope.state = 'initial';
-         $scope.buttonText = 'start';
+         // Scope initialization
+         $scope.state       = 'initial';
+         $scope.buttonText  = 'start';
          $scope.showConfirm = false;
-         $scope.data = {
-            totalTime: 0,
-            details: []
-         }
-         //
+         $scope.data        = {
+                                 totalTime: 0,
+                                 details: []
+                              };
+         // Scope API
          $scope.toggleConfirm = function() {
-            $scope.showConfirm = !$scope.showConfirm;
-         }
+                                   $scope.showConfirm = !$scope.showConfirm;
+                                };
       },
       link: function(scope, element, attrs) {
+         // Private variables
          var time, startTime, stopTime, intervalId, timeoutId;
          var interval = 1000;
          var remTime  = interval;
-         //
+
+         // Private functions
          function timerOneUp() {
             scope.data.totalTime += 1;
             scope.$apply();
@@ -43,7 +53,8 @@ angular.module('timerComponent', [])
             scope.state      = state;
             scope.buttonText = text;
          }
-         //
+
+         // Public functions
          scope.reset = function() {
             changeState('initial', 'start');
             clearTimerIds();
@@ -76,10 +87,18 @@ angular.module('timerComponent', [])
                }, remTime);
                startTime = Date.now();
             }
-         };
-      }
-   }
-})
+         }; // end of toggleStart()
+
+         // Event handler
+         scope.$watchCollection('data', function(newValue) {
+            timerData.totalTime = newValue.totalTime;
+            timerData.details   = newValue.details;
+         });
+      } // end of link
+   } // end of return
+}) // end of directive
+
+//------------------------------------
 
 .directive('timerResetConfirm', function() {
    return {
@@ -91,9 +110,11 @@ angular.module('timerComponent', [])
                 '   <p>Reset timer?</p>' +
                 '   <button id="timer-reset-yes" reset="reset" ng-click="reset(); toggleConfirm();">Yes</button>' +
                 '   <button id="timer-reset-no" ng-click="toggleConfirm()">No</button>' +
-                '</div>',
+                '</div>'
    }
-})
+}) // end of directive
+
+//------------------------------------
 
 .filter('time', function() {
    return function(input) {
@@ -115,6 +136,6 @@ angular.module('timerComponent', [])
 
       return  pad(hh, 2) + ':' + pad(mm, 2) + ':' + pad(ss, 2);
    }
-})
+}) // end of filter
 
-;
+; // end of module

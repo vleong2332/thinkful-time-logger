@@ -1,19 +1,20 @@
 angular.module('ghPushesComponent', [])
 
-.factory('getGithubPushes', function($rootScope, $http, $q) {
+.constant('GITHUB_API', 'https://api.github.com/')
+
+.factory('getGithubPushes', function($http, $q, GITHUB_API) {
    return function(username) {
       var defer = $q.defer();
       $http({
-         url: 'https://api.github.com/users/' + username + '/events',
+         url: GITHUB_API + 'users/' + username + '/events',
          method: 'GET',
-         cache: false
       })
-         .success(function(data) {
-            defer.resolve(data);
-         })
-         .error(function(data) {
-            console.log('Unable to reach GitHub for events data');
-         });
+      .success(function(data) {
+         defer.resolve(data);
+      })
+      .error(function(data) {
+         console.log('Unable to reach GitHub for events data', data);
+      });
       return defer.promise;
    }
 })
@@ -23,60 +24,49 @@ angular.module('ghPushesComponent', [])
       restict: 'EA',
       replace: true,
       scope: true,
-      template: '<div id="gh-pushes-wrapper">' +
-                '   <div id="gh-pushes-head">' +
-                '      <h1>GitHub Pushes</h1>' +
-                '      <button id="refresh-button" ng-click="refresh()" ng-class="{refreshing: refreshing}"></button>' +
-                '      <input name="gh-username" type="text" ng-model="ghUsername" placeholder="GitHub Username" />' +
-                '   </div>' +
-                '   <div id="gh-pushes-body">' +
-                '      <div id="gh-pushes-error-message" class="message" ng-show="noData">Invalid username</div>' +
-                '      <div id="gh-pushes-empty-message" class="message" ng-show="!ghUsername">Enter GitHub username to get data</div>' +
-                '      <div class="gh-pushes-entry" ng-repeat="push in data.pushes">' +
-                '         <p class="gh-pushes-message">' + 
-                '            <a target="_blank" ng-href="https://github.com/{{ push.repo.name }}/commit/{{ push.payload.head }}">' + 
-                '              {{ push.payload.commits[0].message }}' + 
-                '            </a>' +
-                '         </p>' +
-                '         <p class="gh-pushes-time">{{ push.created_at | removeTZ }}</p>' +
-                '      </div>' +
-                '   </div>' +
-                '</div>',
+      templateUrl: './ui_components/gh-pushes/template.html',
       controller: function($scope, $element, $attrs, getGithubPushes) {
          $scope.ghUsername = '';
       },
       link: function(scope, element, attrs) {
+         // Variable declarations
          var input = element.find('input')[0];
          var refreshInterval = 60000;
-
+         // Function declaration
          function githubRequest(username) {
-            getGithubPushes(username).then(function(result) {
-               var cooked = [];
-
+            getGithubPushes(username)
+            .then(function(result) {
+               // Keep only the push events
+               var pushEvents = [];
                angular.forEach(result, function(value, key) {
                   if (value.type == "PushEvent") { this.push(value); }
-               }, cooked);
+               }, pushEvents);
 
-               scope.data = {};
-               scope.data = {
-                  pushes: cooked
-               };
+               // Refresh the object
+               scope.data = {}; // Do I need this? See if refresh works as expected without this
+               scope.data = { pushes: pushEvents };
 
+               // Flag to see if there's any push events; is used in template.
                if (scope.data.pushes.length == 0 && scope.ghUsername != "") { scope.noData = true; }
                else { scope.noData = false; }
             },
-            function(error) {
+            function(error) { // Is this second function necessary in then()?
                console.log(error);
                scope.refreshing = false;
             });
          }
 
-         scope.refresh = function() { console.log('refresh'); githubRequest(scope.ghUsername); }
+         // ng-click on refresh button will trigger this.
+         scope.refresh = function() { githubRequest(scope.ghUsername); }
+         // ^--- If username can be passed from template, I can call the inner function directly 
 
-         githubRequest(scope.ghUsername);
+         // Initial request
+         if (scope.ghUsername) githubRequest(scope.ghUsername);
 
-         setInterval(function () { if(scope.ghUsername != "") githubRequest(scope.ghUsername); }, refreshInterval);
+         // Subsequent requests
+         setInterval(function () { if(scope.ghUsername) githubRequest(scope.ghUsername); }, refreshInterval);
 
+         // Bind event handlers to the github username input
          angular.element(input).on('blur keypress', function(event) {
             // Exit if keypress is not "Enter"
             if (event.type == "keypress" && event.which != 13) {
@@ -84,24 +74,22 @@ angular.module('ghPushesComponent', [])
             }
             // Otherwise, if it's "Enter"...
             else {
-               // Trim input's value
-               input.value = input.value.trim();
                // If, after trimming, input is not empty...
-               if (input.value != "") {
-                  // Request push events from GitHub
+               input.value = input.value.trim();
+               if (input.value) {
                   githubRequest(scope.ghUsername);
                }
                // Blur from the input regardless
                input.blur();
             }
-         });
-      }
-   }
-})
+         }); // end of on()
+      } // end of link
+   } // end of return
+}) // end of directive
 
 .filter('removeTZ', function() {
    return function(input) {
-      var result = input.replace('T', '   ');
+      var result = input.replace('T', ' - ');
       var result = result.replace('Z', '');
       return result;
    }
