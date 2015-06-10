@@ -2,7 +2,6 @@ angular.module('ghPushesComponent', [])
 
 .factory('getGithubPushes', function($rootScope, $http, $q) {
    return function(username) {
-      console.log ('making request');
       var defer = $q.defer();
       $http({
          url: 'https://api.github.com/users/' + username + '/events',
@@ -48,7 +47,7 @@ angular.module('ghPushesComponent', [])
       },
       link: function(scope, element, attrs) {
          var input = element.find('input')[0];
-         var refreshInterval = 18000;
+         var refreshInterval = 60000;
 
          function githubRequest(username) {
             getGithubPushes(username).then(function(result) {
@@ -63,8 +62,6 @@ angular.module('ghPushesComponent', [])
                   pushes: cooked
                };
 
-               console.log(scope.data.pushes);
-
                if (scope.data.pushes.length == 0 && scope.ghUsername != "") { scope.noData = true; }
                else { scope.noData = false; }
             },
@@ -77,11 +74,12 @@ angular.module('ghPushesComponent', [])
          scope.refresh = function() { console.log('refresh'); githubRequest(scope.ghUsername); }
 
          githubRequest(scope.ghUsername);
+
          setInterval(function () { githubRequest(scope.ghUsername); }, refreshInterval);
+
          angular.element(input).on('blur keypress', function(event) {
             // Exit if keypress is not "Enter"
             if (event.type == "keypress" && event.which != 13) {
-               console.log('exiting');
                return;
             }
             // Otherwise, if it's "Enter"...
