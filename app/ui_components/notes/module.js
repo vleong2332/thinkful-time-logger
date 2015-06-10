@@ -39,7 +39,6 @@ angular.module('notesComponent', ['textAngular'])
       controller: function($scope) {
          $scope.htmlVariable = "";
          $scope.$watch('htmlVariable', function(newValue) {
-            console.log('text changed');
             notesData.htmlText = newValue;
          });
       }

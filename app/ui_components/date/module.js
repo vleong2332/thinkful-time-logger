@@ -3,7 +3,6 @@ angular.module('dateComponent', [])
 //------------------------------------
 
 .factory('dateData', function() {
-   console.log('service is invoked');
    return {
       date: ''
    };
@@ -56,7 +55,6 @@ angular.module('dateComponent', [])
 
          // Event handler
          scope.$watchCollection('data', function(newValue) {
-            console.log('watched');
             dateData.date = newValue.date;
          });
 
