@@ -1,0 +1,37 @@
+<div id="history-wrapper" class="clearfix">
+   <div id="history-header" class="clearfix">
+      <h1 id="history-title">History</h1>
+      <div class="dates">Date</div>
+      <div class="time">Time</div>
+      <div class="notes">Notes</div>
+      <div class="questions">Questions</div>
+      <div class="pushes">Pushes</div>
+   </div>
+   <div id="history-body" class="clearfix">
+      <div class="history-entry" ng-repeat="entry in history" class="clearfix">
+         <!-- <pre>{{entry|json}}</pre> -->
+         <div class="dates">
+            {{ entry.entry.date.logged }}
+         </div>
+         <div class="time">
+            {{ entry.entry.time.totalTime || '0' }}
+         </div>
+         <div class="notes">
+            {{ entry.entry.notes || 'none' }}
+            <!-- <div class="notes-expanded popup">{{ entry.entry.notes || 'none' }}</div> -->
+         </div>
+         <div class="questions">
+            {{ entry.entry.questions.length  || '0' }}
+            <!-- <div class="questions-expanded popup">
+               <p ng-repeat="question in entry.entry.questions">{{ question }}</p>
+            </div> -->
+         </div>
+         <div class="pushes">
+            {{ entry.entry.pushes.length  || '0' }}
+           <!--  <div class="pushes-expanded popup">
+               <p ng-repeat="push in entry.entry.pushes">{{ push.payload.commits[0].message }}</p>
+            </div> -->
+         </div>
+      </div>
+   </div>
+</div>

@@ -20,6 +20,7 @@
    <script type="text/javascript" src="./ui_components/notes/module.js"></script>
    <script type="text/javascript" src="./ui_components/questions/module.js"></script>
    <script type="text/javascript" src="./ui_components/gh-pushes/module.js"></script>
+   <script type="text/javascript" src="./ui_components/history/module.js"></script>
    <!-- Root Script -->
    <script type="text/javascript" src="thinkful-time-logger.js"></script>
 
@@ -33,21 +34,22 @@
    <link rel="stylesheet" href="./ui_components/notes/style.css" />
    <link rel="stylesheet" href="./ui_components/questions/style.css" />
    <link rel="stylesheet" href="./ui_components/gh-pushes/style.css" />
+   <link rel="stylesheet" href="./ui_components/history/style.css" />
    <!-- Root Styles -->
 
 </head>
 <body>
 
-   <p ng-repeat="entry in history">{{entry}}</p>
-
-   <button name="rec-n-end-button" ng-click="recAndEndSession()" ng-show="debug">Record and End Session</button>
    
    <vl-date></vl-date>
    <vl-timer></vl-timer>
    <vl-notes></vl-notes>
    <vl-questions></vl-questions>
    <vl-gh-pushes></vl-gh-pushes>
+   <vl-history></vl-history>
 
+   <button name="rec-n-end-button" ng-click="recAndEndSession()" ng-show="debug">Record and End Session</button>
+   
    <div style="display: none">
       Icons made by 
       <a href="http://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from 

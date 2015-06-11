@@ -69,6 +69,8 @@ angular.module('ghPushesComponent', [])
                // Flag to see if there's any push events: this is used in template.
                if (scope.data.pushes.length == 0 && scope.ghUsername != "") { scope.noData = true; }
                else { scope.noData = false; }
+
+               scope.refreshing = false;
             },
             function(error) { // Is this second function necessary in then()?
                console.log(error);
@@ -100,13 +102,8 @@ angular.module('ghPushesComponent', [])
 
          // Only push the last 10 pushes to the main app
          scope.$watchCollection('data.pushes', function(newValue) {
-            if (newValue.length) {
-               ghPushesData.pushes = null;
-            }
-            else {
-               for (var i = 0; i < newValue.length && i < recentPushes; i++) {
-                  ghPushesData.pushes[i] = newValue[i];
-               }
+            for (var i = 0; i < newValue.length && i < recentPushes; i++) {
+               ghPushesData.pushes[i] = newValue[i];
             }
          });
 
