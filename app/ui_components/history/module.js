@@ -6,16 +6,19 @@ angular.module('historyComponent', ['firebase'])
 
 //----------------------------------------------------
 
-.directive('vlHistory', function(FIREBASE_DB, $firebaseObject) {
+.directive('vlHistory', function(FIREBASE_DB, $firebaseObject, $firebaseAuth) {
    return {
       restrict: 'EA',
       replace: true,
       scope: {},
       templateUrl: './ui_components/history/template.html',
       controller: function ($scope, $element, $attrs) {
-         var ref = new Firebase(FIREBASE_DB);
          var placeholder = 'Select a note, a question, or a push to view detail';
-         $scope.history = $firebaseObject(ref);
+         var ref = new Firebase(FIREBASE_DB);
+         var authObj  = $firebaseAuth(ref);
+         var authData = authObj.$getAuth();
+
+         $scope.history  = $firebaseObject(ref);
          $scope.historyDetail = placeholder;
          $scope.isPlaceholder = true;
 
@@ -63,6 +66,21 @@ angular.module('historyComponent', ['firebase'])
                $scope.historyDetail = placeholder;
                $scope.isPlaceholder = true;
             }
+         };
+
+         $scope.userHistory = function (object) {
+            var array = [];
+            angular.forEach(object, function(value, key) {
+               if (value.entry.user.uid == authData.uid) {
+                  array.push(value);
+               }
+            });
+            if (array.length) {
+               array.sort(function(a, b) {
+                  return b.entry.date.logged.localeCompare(a.entry.date.logged);;
+               });
+            }
+            return array;
          };
       }
    }
