@@ -60,6 +60,7 @@ angular.module('thinkfulTimeLogger', ['firebase', 'timerComponent', 'dateCompone
       .then(function (entry) {
             console.log(entry.key() == db.$id);
             $scope.dbSaveSuccess = true;
+            window.location.reload();
          },
          function(error) {
             console.log('Error saving to database:', error);

@@ -10,7 +10,7 @@
 #history-wrapper {
    position: relative;
    font-family: 'Josefin Sans', 'Helvetica Neue', Helvetica;
-   width: calc(53em + 17px);
+   width: calc(56em + 17px);
 }
 .clearfix::after {
    content: '';
@@ -28,6 +28,9 @@
 #history-body {
    height: 150px;
    overflow: auto;
+   border: 1px solid #CACACA;
+   border-radius: 5px;
+   padding: 0.25em;
 }
 .history-entry {
    text-align: left;
@@ -81,9 +84,18 @@
    position: relative;
 }
 
-.popup {
-   position: absolute;
-   top: 0;
-   background-color: #BABABA;
-   z-index: 10000;
+#history-detail {
+   width: 100%;
+   /*background-color: #FEFEDE;*/
+   overflow: auto;
+   height: 150px;
+   /*min-height: 25px;*/
+   /*max-height: 150px;*/
+   padding: 5px;
+   border: 1px solid #CACACA;
+   border-radius: 5px;
+}
+
+.placeholder {
+   color: #BABABA;
 }

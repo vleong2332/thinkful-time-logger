@@ -57,6 +57,9 @@
    font-family: 'Josefin Sans', 'Helvetica Neue', Helvetica;
    height: 150px;
    overflow: auto;
+   padding: 0.25em;
+   border: 1px solid #CACACA;
+   border-radius: 5px;
 }
 #gh-pushes-body .message {
    color: #BABABA;

@@ -33,3 +33,10 @@
    color: #BABABA;
    cursor: pointer;
 }
+#questions-body {
+   height: 215px;
+   overflow: auto;
+   border: 1px solid #CACACA;
+   padding: 0.25em;
+   border-radius: 5px;
+}

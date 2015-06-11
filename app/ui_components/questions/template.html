@@ -1,15 +1,17 @@
 <div id="questions-wrapper">
    <h1>Questions</h1>
-   <div ng-repeat="question in data.questions track by $index">
-     <div
-      id="question{{ $index }}"
-      class="question"
-      contenteditable
-      placeholder="Click to write down a question or concern"
-      ng-enter="addQuestionBox($index)"
-      ng-model="data.questions[$index]"
-      ng-blur="deleteIfEmpty($index, $last, data.questions[$index].length)"
-      ng-focus="updateFocusIndex($index)"
-      force-focus="$index == focusIndex"></div>
+   <div id="questions-body">
+      <div ng-repeat="question in data.questions track by $index">
+        <div
+         id="question{{ $index }}"
+         class="question"
+         contenteditable
+         placeholder="Click to write down a question or concern"
+         ng-enter="addQuestionBox($index)"
+         ng-model="data.questions[$index]"
+         ng-blur="deleteIfEmpty($index, $last, data.questions[$index].length)"
+         ng-focus="updateFocusIndex($index)"
+         force-focus="$index == focusIndex"></div>
+      </div>
    </div>
 </div>

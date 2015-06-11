@@ -22,7 +22,7 @@
    <script type="text/javascript" src="./ui_components/gh-pushes/module.js"></script>
    <script type="text/javascript" src="./ui_components/history/module.js"></script>
    <!-- Root Script -->
-   <script type="text/javascript" src="thinkful-time-logger.js"></script>
+   <script type="text/javascript" src="./scripts/thinkful-time-logger.js"></script>
 
    <!-- Style Dependencies -->
    <link rel="stylesheet" href="./bower_components/bootstrap-css-only/css/bootstrap.min.css" />
@@ -36,19 +36,39 @@
    <link rel="stylesheet" href="./ui_components/gh-pushes/style.css" />
    <link rel="stylesheet" href="./ui_components/history/style.css" />
    <!-- Root Styles -->
+   <link rel="stylesheet" type="text/css" href="./styles/thinkful-time-logger.css" />
 
 </head>
 <body>
 
+   <header>
+      <h1>Thinkful Time Logger</h1>
+   </header>
    
-   <vl-date></vl-date>
-   <vl-timer></vl-timer>
-   <vl-notes></vl-notes>
-   <vl-questions></vl-questions>
-   <vl-gh-pushes></vl-gh-pushes>
-   <vl-history></vl-history>
+   <section id="main-wrapper">
+      <div id="vl-date">
+         <vl-date></vl-date>
+      </div>
+      <div id="vl-timer">
+         <vl-timer></vl-timer>
+      </div>
+      <div id="vl-notes">
+         <vl-notes></vl-notes>
+      </div>
+      <div id="vl-questions">
+         <vl-questions></vl-questions>
+      </div>
+      <div id="vl-gh-pushes">
+         <vl-gh-pushes></vl-gh-pushes>
+      </div>
+      <div id="vl-history">
+         <vl-history></vl-history>
+      </div>
+      <button name="rec-n-end-button" ng-click="recAndEndSession()" ng-show="debug"></button>
+   </section>
 
-   <button name="rec-n-end-button" ng-click="recAndEndSession()" ng-show="debug">Record and End Session</button>
+   <footer>
+   </footer>
    
    <div style="display: none">
       Icons made by 

@@ -1,0 +1,73 @@
+header {
+   min-width: 100%;
+   background-color: #3476FF;
+   text-align: center;
+   padding: 1.5em;
+   margin-bottom: 1.5em;
+}
+header h1 {
+   font-family: 'Lato Bold', 'Helvetica Neue', Helvetica;
+   color: #FFF;
+   margin: 0;
+}
+
+#vl-date #date {
+   font-size: 1.5em;
+}
+
+#main-wrapper {
+   width: 1200px;
+   margin: 0 auto;
+   /*border: 1px solid #BABABA;*/
+   padding: 0 1.5em;
+   position: relative;
+}
+#vl-notes {
+   position: absolute;
+   top: -13px;
+   left: 370px;
+}
+#vl-questions #questions-wrapper {
+   width: 320px;
+}
+#vl-questions #questions-wrapper div.question {
+   width: 100%;
+}
+#vl-history {
+   position: absolute;
+   right: 30px;
+   top: 502px;
+}
+button[name="rec-n-end-button"] {
+   width: 100px;
+   height: 100px;
+   background-color: #3476FF;
+   border: none;
+   border-radius: 50%;
+   position: fixed;
+   top: 25px;
+   right: 25px;
+   background-image: url('../img/save.svg');
+   background-size: 50%;
+   background-repeat: no-repeat;
+   background-position: center;
+   -webkit-box-shadow: 0px 0px 10px 1px #555;
+   box-shadow: 0px 0px 10px 1px #555;
+}
+button[name="rec-n-end-button"]:hover {
+   background-color: #9ABBFF;
+}
+button[name="rec-n-end-button"]:focus {
+   outline: none;
+}
+footer {
+   min-width: 100%;
+   background-color: #3476FF;
+   height: 100px;
+   margin-top: 300px;
+}
+
+#vl-notes .btn-toolbar {
+   margin-left: 0;
+   border-radius: 5px;
+}

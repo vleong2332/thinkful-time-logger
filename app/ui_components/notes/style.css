@@ -42,14 +42,16 @@
    padding: 3px 6px;
 }
 #notes-wrapper .ta-editor.ta-html, .ta-scroll-window.form-control {
-   min-height: 100px;
-   max-height: 420px;
+   height: 420px;
    overflow: auto;
    font-family: inherit;
-   font-size: 120%;
+   font-size: 110%;
 }
 #notes-wrapper .ta-scroll-window > .ta-bind {
-   min-height: 100px;
+   height: 100%;
+}
+#notes-wrapper .ta-scroll-window > .ta-bind:focus {
+   outline: none;
 }
 div[id^='taTextElement'].placeholder-text::before {
    color: #BABABA;

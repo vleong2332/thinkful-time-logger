@@ -11,10 +11,10 @@
    position: relative;
    width: 320px;
    padding: 25px;
-   border: 2px solid #AAA;
+   border: 1px solid #CACACA;
    border-radius: 5px;
-   background-color: #F7F7F7;
-   text-align: center;
+   /*background-color: #F7F7F7;
+*/   text-align: center;
    font-family: 'Lato Bold', Arial ,sans-serif;
 }
 #timer-time {

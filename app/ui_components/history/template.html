@@ -16,22 +16,24 @@
          <div class="time">
             {{ entry.entry.time.totalTime || '0' }}
          </div>
-         <div class="notes">
+         <div class="notes" ng-click="expandNotes(entry.entry.notes)">
             {{ entry.entry.notes || 'none' }}
             <!-- <div class="notes-expanded popup">{{ entry.entry.notes || 'none' }}</div> -->
          </div>
-         <div class="questions">
+         <div class="questions" ng-click="expandQuestions(entry.entry.questions)">
             {{ entry.entry.questions.length  || '0' }}
             <!-- <div class="questions-expanded popup">
                <p ng-repeat="question in entry.entry.questions">{{ question }}</p>
             </div> -->
          </div>
-         <div class="pushes">
+         <div class="pushes" ng-click="expandPushes(entry.entry.pushes)">
             {{ entry.entry.pushes.length  || '0' }}
-           <!--  <div class="pushes-expanded popup">
+            <!-- <div class="pushes-expanded popup">
                <p ng-repeat="push in entry.entry.pushes">{{ push.payload.commits[0].message }}</p>
             </div> -->
          </div>
       </div>
    </div>
+   <h1>History Details</h1>
+   <div id="history-detail" ng-bind-html="historyDetail" ng-class="{placeholder: isPlaceholder}"></div>
 </div>
