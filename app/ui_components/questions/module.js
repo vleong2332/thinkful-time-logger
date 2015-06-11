@@ -52,10 +52,12 @@ angular.module('questionsComponent', ['textAngular'])
       link: function(scope) {
          // Event handler
          scope.$watchCollection('data.questions', function(newValue) {
-            console.log('bug 1');
-            questionsData.questions = newValue;
-            console.log('bug 2', questionsData.questions);
-            console.log('bug 3', newValue);
+            if (newValue.length == 1 && newValue[0].length == 0) {
+               questionsData.questions = null;
+            }
+            else {
+                questionsData.questions = newValue;
+            }
          });
       }
    } // end of return

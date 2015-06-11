@@ -1,6 +1,18 @@
 angular.module('ghPushesComponent', [])
 
+//-------------------------------------
+
+.factory('ghPushesData', function() {
+   return {
+      pushes: []
+   }
+})
+
+//-------------------------------------
+
 .constant('GITHUB_API', 'https://api.github.com/')
+
+//-------------------------------------
 
 .factory('getGithubPushes', function($http, $q, GITHUB_API) {
    return function(username) {
@@ -19,24 +31,32 @@ angular.module('ghPushesComponent', [])
    }
 })
 
-.directive('vlGhPushes', function(getGithubPushes) {
+//-------------------------------------
+
+.directive('vlGhPushes', function(getGithubPushes, ghPushesData) {
    return {
       restict: 'EA',
       replace: true,
       scope: true,
       templateUrl: './ui_components/gh-pushes/template.html',
-      controller: function($scope, $element, $attrs, getGithubPushes) {
+      controller: function($scope, $element, $attrs) {
          $scope.ghUsername = '';
+         $scope.data = { pushes: [] };
+         $scope.noData = false;
+         $scope.refreshing = false;
       },
       link: function(scope, element, attrs) {
-         // Variable declarations
+         // Private variables
          var input = element.find('input')[0];
          var refreshInterval = 60000;
-         // Function declaration
+         var recentPushes = 10;
+
+         // Private functions
          function githubRequest(username) {
+            scope.refreshing = true;
             getGithubPushes(username)
             .then(function(result) {
-               // Keep only the push events
+               // Only keep the push events
                var pushEvents = [];
                angular.forEach(result, function(value, key) {
                   if (value.type == "PushEvent") { this.push(value); }
@@ -44,9 +64,9 @@ angular.module('ghPushesComponent', [])
 
                // Refresh the object
                scope.data = {}; // Do I need this? See if refresh works as expected without this
-               scope.data = { pushes: pushEvents };
+               scope.data.pushes = pushEvents;
 
-               // Flag to see if there's any push events; is used in template.
+               // Flag to see if there's any push events: this is used in template.
                if (scope.data.pushes.length == 0 && scope.ghUsername != "") { scope.noData = true; }
                else { scope.noData = false; }
             },
@@ -60,32 +80,41 @@ angular.module('ghPushesComponent', [])
          scope.refresh = function() { githubRequest(scope.ghUsername); }
          // ^--- If username can be passed from template, I can call the inner function directly 
 
-         // Initial request
+         // Initial and subsequent requests
          if (scope.ghUsername) githubRequest(scope.ghUsername);
-
-         // Subsequent requests
          setInterval(function () { if(scope.ghUsername) githubRequest(scope.ghUsername); }, refreshInterval);
 
          // Bind event handlers to the github username input
          angular.element(input).on('blur keypress', function(event) {
-            // Exit if keypress is not "Enter"
             if (event.type == "keypress" && event.which != 13) {
                return;
             }
-            // Otherwise, if it's "Enter"...
             else {
-               // If, after trimming, input is not empty...
                input.value = input.value.trim();
                if (input.value) {
                   githubRequest(scope.ghUsername);
                }
-               // Blur from the input regardless
                input.blur();
             }
-         }); // end of on()
+         });
+
+         // Only push the last 10 pushes to the main app
+         scope.$watchCollection('data.pushes', function(newValue) {
+            if (newValue.length) {
+               ghPushesData.pushes = null;
+            }
+            else {
+               for (var i = 0; i < newValue.length && i < recentPushes; i++) {
+                  ghPushesData.pushes[i] = newValue[i];
+               }
+            }
+         });
+
       } // end of link
    } // end of return
 }) // end of directive
+
+//-------------------------------------
 
 .filter('removeTZ', function() {
    return function(input) {
@@ -95,4 +124,4 @@ angular.module('ghPushesComponent', [])
    }
 })
 
-;
+; // end of module

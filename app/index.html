@@ -38,7 +38,9 @@
 </head>
 <body>
 
-   <button name="test-button" ng-click="logSvcs()">Log</button>
+   <p ng-repeat="entry in history">{{entry}}</p>
+
+   <button name="rec-n-end-button" ng-click="recAndEndSession()" ng-show="debug">Record and End Session</button>
    
    <vl-date></vl-date>
    <vl-timer></vl-timer>
