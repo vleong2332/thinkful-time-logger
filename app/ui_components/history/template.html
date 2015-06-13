@@ -1,31 +1,30 @@
-<div id="history-wrapper" class="clearfix">
-   <div id="history-header" class="clearfix">
-      <h1 id="history-title">History</h1>
-      <div class="dates">Date</div>
-      <div class="time">Time</div>
-      <div class="notes">Notes</div>
-      <div class="questions">Questions</div>
-      <div class="pushes">Pushes</div>
+<div id="history-wrapper" class="wrapper wrapper-history clearfix">
+   <h1 id="history-title" class="component-title">Past Study Sessions</h1>
+   <div id="history-header" class="component-header wrapper-border clearfix">
+      <div class="column dates">Date</div>
+      <div class="column time">Time</div>
+      <div class="column notes">Notes</div>
+      <div class="column questions">Questions</div>
+      <div class="column pushes">Pushes</div>
    </div>
-   <div id="history-body" class="clearfix">
-      <div class="history-entry" ng-repeat="log in userHistory(history)" class="clearfix">
-         <div class="dates">
+   <div id="history-body" class="wrapper-border component-body clearfix">
+      <div class="history-entry" ng-repeat="log in userHistory(history)" class="list-entry clearfix">
+         <div class="column dates">
             {{ log.entry.date.logged }}
          </div>
-         <div class="time">
+         <div class="column time">
             {{ log.entry.time.totalTime || '0' }}
          </div>
-         <div class="notes" ng-click="expandNotes(log.entry.notes)">
-            {{ log.entry.notes || 'none' }}
+         <div class="column notes" ng-click="expandNotes(log.entry.notes)" ng-bind-html ="log.entry.notes">
             <!-- <div class="notes-expanded popup">{{ entry.entry.notes || 'none' }}</div> -->
          </div>
-         <div class="questions" ng-click="expandQuestions(log.entry.questions)">
+         <div class="column questions" ng-click="expandQuestions(log.entry.questions)">
             {{ log.entry.questions.length  || '0' }}
             <!-- <div class="questions-expanded popup">
                <p ng-repeat="question in entry.entry.questions">{{ question }}</p>
             </div> -->
          </div>
-         <div class="pushes" ng-click="expandPushes(log.entry.pushes)">
+         <div class="column pushes" ng-click="expandPushes(log.entry.pushes)">
             {{ log.entry.pushes.length  || '0' }}
             <!-- <div class="pushes-expanded popup">
                <p ng-repeat="push in entry.entry.pushes">{{ push.payload.commits[0].message }}</p>
@@ -33,6 +32,6 @@
          </div>
       </div>
    </div>
-   <h1>History Details</h1>
-   <div id="history-detail" ng-bind-html="historyDetail" ng-class="{placeholder: isPlaceholder}"></div>
+   <h1 class="component-title">Details</h1>
+   <div id="history-detail" class="wrapper-border component-body" ng-bind-html="historyDetail" ng-class="{placeholder: isPlaceholder}"></div>
 </div>
