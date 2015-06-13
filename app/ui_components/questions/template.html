@@ -1,12 +1,13 @@
-<div id="questions-wrapper">
-   <h1>Questions</h1>
-   <div id="questions-body">
+<div id="questions-wrapper" class="wrapper wrapper-questions">
+   <h1 class="component-title">Questions</h1>
+   <div id="questions-body" class="wrapper-border component-body v-scroll">
       <div ng-repeat="question in data.questions track by $index">
         <div
          id="question{{ $index }}"
-         class="question"
+         class="question list-entry"
          contenteditable
          placeholder="Click to write down a question or concern"
+         ng-keydown="checkCaret($event)"
          ng-enter="addQuestionBox($index)"
          ng-model="data.questions[$index]"
          ng-blur="deleteIfEmpty($index, $last, data.questions[$index].length)"

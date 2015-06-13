@@ -1,74 +1,53 @@
-@font-face {
-   font-family: 'Lato Bold';
-   src: url('lato-bold-webfont.woff') format('woff');
+.wrapper-gh-pushes {
+   min-width: 310px;
+   padding: 0;
 }
-@font-face {
-   font-family: 'Josefin Sans';
-   src: url('josefinsans-regular-webfont.woff') format('woff');
-}
-
-#gh-pushes-wrapper {
-   width: 320px;
-   position: relative;
-}
-#gh-pushes-wrapper h1,
-#gh-pushes-wrapper #refresh-button
-#gh-pushes-wrapper input {
+.wrapper .component-title,
+.gh-pushes-refresh,
+.input[name="gh-username"] {
    display: inline-block;
 }
-#gh-pushes-wrapper h1 {
-   font-family: 'Lato Bold', 'Helvetica Neue', Helvetica;
-   font-size: 1.5em;
-}
-#gh-pushes-wrapper #refresh-button {
-   width: 15px;
-   height: 15px;
-   border: none;
-   background-color: transparent;
+.gh-pushes-refresh {
+   width: 20px;
+   height: 20px;
    background-image: url('refresh_arrow.svg');
-   background-size: 100%;
-   padding: 0;
-   margin: 0;
+   vertical-align: text-bottom;
+   transition: filter ease 0.25s,
+               transform ease 0.25s;
 }
-#gh-pushes-wrapper #refresh-button:focus {
-   outline: none;
+.gh-pushes-refresh:hover,
+.gh-pushes-refresh.refreshing {
+   -webkit-filter: contrast(70%);
+   -o-filter: contrast(70%);
+   filter: contrast(70%);
+   -webkit-transform: rotate(360deg);
+   -ms-transform: rotate(360deg);
+   -o-transform: rotate(360deg);
+   transform: rotate(360deg);
 }
-#gh-pushes-wrapper #refresh-button.refreshing {
-   -webkit-filter: grayscale(100%);
-}
-#gh-pushes-wrapper input {
+input[name="gh-username"] {
+   -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+        -o-box-sizing: border-box;
+           box-sizing: border-box;
+   padding: 0 0.15em;
    text-align: right;
-   width: 120px;
-   margin: 0;
-   height: 1.5em;
-   font-family: 'Josefin Sans';
+   font-family: 'Yantramanav Light', Helvetica, sans-serif;
+   height: 20px;
    position: absolute;
    right: 0;
-   top: 22px;
-   border: none;
+   bottom: 9px;
+   width: 10em;
    cursor: pointer;
 }
-#gh-pushes-wrapper input:focus {
-   outline: none;
-   background-color: #DEDEDE;
-   border-radius: 3px;
-}
-#gh-pushes-body {
-   font-family: 'Josefin Sans', 'Helvetica Neue', Helvetica;
+.gh-pushes-body {
    height: 150px;
-   overflow: auto;
+   font-family: 'Yantramanav Light', Helvetica, sans-serif;
+}
+.wrapper .wrapper-border {
    padding: 0.25em;
-   border: 1px solid #CACACA;
-   border-radius: 5px;
 }
-#gh-pushes-body .message {
-   color: #BABABA;
-}
-#gh-pushes-body .gh-pushes-message {
-   margin-bottom: -0.25em;
-   line-height: 1.2;
-}
-#gh-pushes-body .gh-pushes-time {
-   color: #BABABA;
-   font-size: 80%;
+.gh-pushes-time {
+   color: #CACACA;
+   margin-top: -12px;
 }

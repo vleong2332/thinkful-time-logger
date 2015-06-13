@@ -6,6 +6,7 @@
 
    <!-- Angular JS -->
    <script type="text/javascript" src="./bower_components/angular/angular.min.js"></script>
+   <script type="text/javascript" src="./bower_components/angular-animate/angular-animate.min.js"></script>
    <!-- Angularfire -->
    <script type="text/javascript" src="./bower_components/firebase/firebase.js"></script>
    <script type="text/javascript" src="./bower_components/angularfire/dist/angularfire.min.js"></script>
@@ -29,6 +30,7 @@
    <link rel="stylesheet" href="./bower_components/font-awesome/css/font-awesome.min.css" />
    <link rel='stylesheet' href='./bower_components/textAngular/dist/textAngular.css' />
    <!-- Module Styles -->
+   <link rel="stylesheet" href="./ui_components/common/style.css" />
    <link rel="stylesheet" href="./ui_components/timer/style.css" />
    <link rel="stylesheet" href="./ui_components/date/style.css" />
    <link rel="stylesheet" href="./ui_components/notes/style.css" />
@@ -44,26 +46,34 @@
    <header>
       <h1>Thinkful Time Logger</h1>
    </header>
-   
+
    <section id="main-wrapper">
-      <div id="vl-date">
-         <vl-date></vl-date>
+
+      <div class="col col-small col-left">
+         <div id="date-component" class="component">
+            <vl-date></vl-date>
+         </div>
+         <div id="timer-component" class="component">
+            <vl-timer></vl-timer>
+         </div>
+         <div id="gh-pushes-component" class="component">
+            <vl-gh-pushes></vl-gh-pushes>
+         </div>
       </div>
-      <div id="vl-timer">
-         <vl-timer></vl-timer>
+      
+      <div class="col col-big col-right">
+         <div id="notes-component" class="component">
+            <vl-notes></vl-notes>
+         </div>
+         <div id="questions-component" class="component">
+            <vl-questions></vl-questions>
+         </div>
+         
+         <div id="history-component" class="component">
+            <vl-history></vl-history>
+         </div>
       </div>
-      <div id="vl-notes">
-         <vl-notes></vl-notes>
-      </div>
-      <div id="vl-questions">
-         <vl-questions></vl-questions>
-      </div>
-      <div id="vl-gh-pushes">
-         <vl-gh-pushes></vl-gh-pushes>
-      </div>
-      <div id="vl-history">
-         <vl-history></vl-history>
-      </div>
+
       <button name="rec-n-end-button" ng-click="recAndEndSession()" ng-show="debug"></button>
    </section>
 

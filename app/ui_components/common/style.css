@@ -1,0 +1,193 @@
+@font-face {
+   font-family: 'Lato Bold';
+   src: url('fonts/Lato-Bold-webfont.eot');
+   src: url('fonts/Lato-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Lato-Bold-webfont.woff2') format('woff2'),
+        url('fonts/Lato-Bold-webfont.woff') format('woff'),
+        url('fonts/Lato-Bold-webfont.ttf')  format('truetype'),
+        url('fonts/Lato-Bold-webfont.svg#Lato-Bold-webfont') format('svg');
+}
+@font-face {
+   font-family: 'Yantramanav Light';
+   src: url('fonts/yantramanav-light-webfont.eot');
+   src: url('fonts/yantramanav-light-webfont.eot?#iefix') format('embedded-opentype'),
+        url('fonts/yantramanav-light-webfont.woff2') format('woff2'),
+        url('fonts/yantramanav-light-webfont.woff') format('woff'),
+        url('fonts/yantramanav-light-webfont.ttf')  format('truetype'),
+        url('fonts/yantramanav-light-webfont.svg#yantramanav-light-webfont') format('svg');
+}
+@font-face {
+   font-family: 'Yantramanav Medium';
+   src: url('fonts/yantramanav-medium-webfont.eot');
+   src: url('fonts/yantramanav-medium-webfont.eot?#iefix') format('embedded-opentype'),
+        url('fonts/yantramanav-medium-webfont.woff2') format('woff2'),
+        url('fonts/yantramanav-medium-webfont.woff') format('woff'),
+        url('fonts/yantramanav-medium-webfont.ttf')  format('truetype'),
+        url('fonts/yantramanav-medium-webfont.svg#yantramanav-medium-webfont') format('svg');
+}
+@font-face {
+   font-family: 'Yantramanav Black';
+   src: url('fonts/yantramanav-black-webfont.eot');
+   src: url('fonts/yantramanav-black-webfont.eot?#iefix') format('embedded-opentype'),
+        url('fonts/yantramanav-black-webfont.woff2') format('woff2'),
+        url('fonts/yantramanav-black-webfont.woff') format('woff'),
+        url('fonts/yantramanav-black-webfont.ttf')  format('truetype'),
+        url('fonts/yantramanav-black-webfont.svg#yantramanav-black-webfont') format('svg');
+}
+
+.wrapper {
+   position: relative;
+}
+.wrapper-border {
+   border: 1px solid #CACACA;
+   -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+           border-radius: 5px;
+}
+.clearfix::after {
+   content: '';
+   display: block;
+   clear: both;
+}
+.component-title {
+   font-family: 'Lato Bold', Arial ,sans-serif;
+   font-size: 1.5em;
+}
+.button {
+   border: 0;
+   -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+           border-radius: 3px;
+   font-family: 'Lato Bold', Arial ,sans-serif;
+   font-size: 100%;
+   cursor: pointer;
+   color: #FFF;
+   transition: background-color ease 0.15s;
+}
+.button:focus,
+.button-icon:focus
+{
+   outline: none;
+}
+.button-icon {
+   border: 0;
+   padding: 0;
+   background-size: 100%;
+   background-color: transparent;
+}
+.button-blue {
+   background-color: #3476FF;
+}
+.button-blue:hover {
+   background-color: #9ABBFF;
+}
+.button-red {
+   background-color: #E43D3E;
+}
+.button-red:hover {
+   background-color: #EE4D4E;
+}
+.popup {
+   position: absolute;
+   padding: 1em 1.5em;
+   border-radius: 5px;
+   background-color: #666;
+   text-align: center;
+   z-index: 1000;
+}
+.popup::before {
+   content: '';
+   display: block;
+   position: absolute;
+   border-style: solid;
+   border-width: 10px;
+   border-color: transparent transparent #666 transparent;
+   top: -20px;
+   left: calc(50% - 10px);
+}
+.popup-shadow {
+   -webkit-box-shadow: 0 4px 7px 1px #333;
+      -moz-box-shadow: 0 4px 7px 1px #333;
+           box-shadow: 0 4px 7px 1px #333;
+}
+.wrapper .popup p {
+   color: #FFF;
+   font-size: 125%;
+   font-family: 'Yantramanav Light', Arial ,sans-serif;
+   margin: 0 0 0.5em 0;
+}
+.wrapper .popup input {
+   display: block;
+   margin-bottom: 0.75em;
+   line-height: normal;
+}
+.popup .button {
+   padding: 0.35em 1em;
+}
+.popup .button-yes {
+   margin-right: 0.35em;
+}
+.popup .button-no {
+   margin-left: 0.35em;
+}
+.edit-on-focus {
+   border: none;
+}
+.edit-on-focus:focus {
+   background-color: #FEFEDE;
+}
+.pos-relative {
+   position: relative;
+}
+.v-scroll {
+   overflow-y: auto;
+}
+.messages {
+   border-radius: 3px;
+   padding: 0.25em;
+   margin-bottom: 0.25em;
+}
+.messages-bad {
+   background-color: #FDE2E2;
+   color: #E51A1A;
+}
+.messages-neutral {
+   background-color: #CACACA;
+   color: #333;
+}
+.list-entry {
+   transition: background-color ease 0.15s;
+   border-radius: 3px;
+   padding: 0 0.25em;
+}
+.list-entry:hover,
+.list-entry:focus {
+   background-color: #FEFEDE;
+}
+.component-body {
+  height: 150px;
+  font-family: 'Yantramanav Light', Helvetica, sans-serif;
+}
+
+
+/* Animating popup */
+.popup.ng-hide-add,
+.popup.ng-hide-remove
+{
+   transition: 0s linear all;
+}
+.popup.ng-hide-add-active,
+.popup.ng-hide-remove-active
+{
+   transition: 0.2s ease all;
+}
+.popup.ng-hide-add,
+.popup.ng-hide-remove.ng-hide-remove-active
+{
+   opacity: 1;
+}
+.popup.ng-hide-remove,
+.popup.ng-hide-add.ng-hide-add-active
+{
+   opacity: 0;
+}

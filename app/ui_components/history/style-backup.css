@@ -1,3 +1,12 @@
+@font-face {
+   font-family: 'Lato Bold';
+   src: url('lato-bold-webfont.woff') format('woff');
+}
+@font-face {
+   font-family: 'Josefin Sans';
+   src: url('josefinsans-regular-webfont.woff') format('woff');
+}
+
 #history-wrapper {
    position: relative;
    font-family: 'Josefin Sans', 'Helvetica Neue', Helvetica;

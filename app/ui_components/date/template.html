@@ -1,6 +1,13 @@
-<div id="date-container">
-   <p>Today is 
-      <span id="date" ng-click="toggleChangePanel()" ng-class="{changing: changePanelView}">{{ data.date | date: fullDate }}</span>
+<div id="date-wrapper" class="wrapper wrapper-date">
+   <p class="text-title">Today is 
+
+      <span id="date" class="link bigger" title="Date for this session"
+       ng-click="toggleChangePanel()"
+       ng-class="{changing: changePanelView}">
+         {{ data.date | date: fullDate }}
+      </span>
+
    </p>
-   <vl-date-change ng-show="changePanelView"></vl-date-change>
+
+   <vl-date-change data-ng-show="changePanelView"></vl-date-change>
 </div>

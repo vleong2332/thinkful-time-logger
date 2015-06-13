@@ -1,13 +1,25 @@
-<div id="gh-pushes-wrapper">
-   <div id="gh-pushes-head">
-      <h1>GitHub Pushes</h1>
-      <button id="refresh-button" ng-click="refresh()" ng-class="{refreshing: refreshing}"></button>
-      <input name="gh-username" type="text" ng-model="ghUsername" placeholder="GitHub Username" />
+<div id="gh-pushes-wrapper"  class="wrapper wrapper-gh-pushes">
+
+   <div id="gh-pushes-head" class="pos-relative">
+      <h1 class="component-title">GitHub Pushes</h1>
+
+      <button id="gh-pushes-refresh" class="button button-icon gh-pushes-refresh"
+       ng-click="refresh()"
+       ng-class="{refreshing: refreshing}">
+      </button>
+
+      <input name="gh-username" class="edit-on-focus" type="text" 
+       ng-model="ghUsername"
+       placeholder="Enter GitHub username"
+      />
    </div>
-   <div id="gh-pushes-body">
-      <div id="gh-pushes-error-message" class="message" ng-show="noData">Invalid username</div>
-      <div id="gh-pushes-empty-message" class="message" ng-show="!ghUsername">Enter GitHub username to get data</div>
-      <div class="gh-pushes-entry" ng-repeat="push in data.pushes">
+
+   <div id="gh-pushes-body" class="wrapper-border gh-pushes-body v-scroll">
+      <div id="gh-pushes-error-message" class="messages messages-bad" ng-show="noData">Invalid username</div>
+      <div id="gh-pushes-empty-message" class="messages messages-neutral" ng-show="!ghUsername">
+         No GitHub username. Enter on the upper-right to get pushes
+      </div>
+      <div class="list-entry" ng-repeat="push in data.pushes">
          <p class="gh-pushes-message">
             <a target="_blank" ng-href="https://github.com/{{ push.repo.name }}/commit/{{ push.payload.head }}">
                {{ push.payload.commits[0].message }}
@@ -16,4 +28,5 @@
          <p class="gh-pushes-time">{{ push.created_at | removeTZ }}</p>
       </div>
    </div>
+
 </div>

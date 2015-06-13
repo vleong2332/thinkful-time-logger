@@ -1,4 +1,4 @@
-angular.module('thinkfulTimeLogger', ['firebase', 'timerComponent', 'dateComponent', 'notesComponent', 'questionsComponent', 'ghPushesComponent', 'historyComponent'])
+angular.module('thinkfulTimeLogger', ['ngAnimate', 'firebase', 'timerComponent', 'dateComponent', 'notesComponent', 'questionsComponent', 'ghPushesComponent', 'historyComponent'])
 
 //--------------------------------------------------
 

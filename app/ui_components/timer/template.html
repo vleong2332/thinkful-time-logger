@@ -1,6 +1,14 @@
-<div id="timer-container">
-   <div id="timer-time">{{ data.totalTime | time }}</div>
-   <button id="timer-button" ng-click="toggleStart()">{{ buttonText | uppercase}}</button>
-   <button id="timer-reset" ng-click="toggleConfirm()"></button>
+<div id="timer-wrapper" class="wrapper wrapper-border wrapper-timer">
+   <div id="timer-time" class="timer jumbo-text">{{ data.totalTime | time }}</div>
+
+   <button id="timer-button" class="button button-blue bigger timer-button"
+    ng-click="toggleStart()">
+      {{ buttonText | uppercase}}
+   </button>
+
+   <button id="timer-reset" class="button button-icon timer-reset"
+    ng-click="toggleConfirm()">
+   </button>
+
    <timer-reset-confirm ng-show="showConfirm"></timer-reset-confirm>
 </div>

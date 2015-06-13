@@ -106,11 +106,7 @@ angular.module('timerComponent', [])
       restrict: 'EA',
       replace: true,
       scope: true,
-      template: '<div id="timer-reset-confirm">' +
-                '   <p>Reset timer?</p>' +
-                '   <button id="timer-reset-yes" reset="reset" ng-click="reset(); toggleConfirm();">Yes</button>' +
-                '   <button id="timer-reset-no" ng-click="toggleConfirm()">No</button>' +
-                '</div>'
+      templateUrl: './ui_components/timer/reset-confirm-templ.html'
    }
 }) // end of directive
 

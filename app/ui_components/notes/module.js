@@ -31,11 +31,7 @@ angular.module('notesComponent', ['textAngular'])
       restict: 'EA',
       replace: true,
       scope: {},
-      template: '<div id="notes-wrapper">' +
-                '   <h1>Notes</h1>' +
-                '   <text-angular ng-model="htmlVariable" name="notes"' +
-                '    placeholder="Write down important notes here"></text-angular>' +
-                '</div>',
+      templateUrl: './ui_components/notes/template.html',
       controller: function($scope) {
          $scope.htmlVariable = "";
          $scope.$watch('htmlVariable', function(newValue) {

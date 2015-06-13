@@ -1,0 +1,82 @@
+@font-face {
+   font-family: 'Lato Bold';
+   src: url('lato-bold-webfont.woff') format('woff');
+}
+@font-face {
+   font-family: 'Josefin Sans';
+   src: url('josefinsans-regular-webfont.woff') format('woff');
+}
+
+#date-container {
+   position: relative;
+}
+#date-container p {
+   font-family: 'Josefin Sans', Arial, sans-serif;
+   font-size: 1.5em;
+}
+#date {
+   font-family: 'Lato Bold', Arial, sans-serif;
+   color: #3476FF;
+   font-size: 1.85em;
+   cursor: pointer;
+}
+#date:hover, #date.changing {
+   color: #9ABBFF;
+}
+
+
+#change-date-container {
+   position: absolute;
+   left: 66px;
+   top: 60px;
+   background-color: #666;
+   padding: 1em 1.5em;
+   text-align: center;
+   border-radius: 5px;
+   z-index: 1000;
+}
+#change-date-container::before {
+   content: '';
+   display: block;
+   position: absolute;
+   border-style: solid;
+   border-width: 10px;
+   border-color: transparent transparent #666 transparent;
+   left: calc(50% - 5px);
+   top: -20px;
+}
+#change-date-container p {
+   margin: 0;
+   color: #F7F7F7;
+   font-size: 1.25em;
+   font-family: 'Josefin Sans', Arial ,sans-serif;
+   margin-bottom: 0.5em;
+}
+input[name='new-date'] {
+   display: block;
+   margin-bottom: 0.75em;
+   line-height: normal;
+}
+#change-date-yes, #change-date-no {
+   padding: 0.5em 0.8em;
+   border: 0;
+   border-radius: 3px;
+   color: #EEE;
+   font-size: 1em;
+   font-family: 'Lato Bold', Arial ,sans-serif;
+   cursor: pointer;
+}
+#change-date-yes {
+   background-color: #3476FF;
+   margin-right: 0.35em;
+}
+#change-date-yes:hover {
+   background-color: #9ABBFF;
+}
+#change-date-no {
+   background-color: #E43D3E;
+   margin-left: 0.35em;
+}
+#change-date-no:hover {
+   background-color: #EE4D4E;
+}

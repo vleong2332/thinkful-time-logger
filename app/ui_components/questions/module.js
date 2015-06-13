@@ -48,8 +48,34 @@ angular.module('questionsComponent', ['textAngular'])
                }
             } // end of if
          }; // end of addQuestionBox()
+
+         $scope.checkCaret = function($event) {
+            // up 38, down 40
+            if ($event.keyCode === 38) {
+               var sel = window.getSelection();
+               // If caret is at the beginning of text
+               if (sel.rangeCount === 1 && sel.isCollapsed && sel.focusOffset === 0 ) {
+               // and if there is a previous element, focus on it
+                  var previous = document.activeElement.parentElement.previousElementSibling;
+                  if (previous) {
+                     previous.firstElementChild.focus();
+                  }
+               }
+            }
+            else if ($event.keyCode == 40) {
+               var sel = window.getSelection();
+               // If caret is at the beginning of text
+               if (sel.rangeCount === 1 && sel.isCollapsed && sel.focusOffset === sel.focusNode.length ) {
+               // and if there is a previous element, focus on it
+                  var next = document.activeElement.parentElement.nextElementSibling;
+                  if (next) {
+                     next.firstElementChild.focus();
+                  }
+               }
+            }
+         }; // ned of checkCaret()
       },
-      link: function(scope) {
+      link: function(scope, element, attrs) {
          // Event handler
          scope.$watchCollection('data.questions', function(newValue) {
             if (newValue.length == 1 && newValue[0].length == 0) {
@@ -59,6 +85,7 @@ angular.module('questionsComponent', ['textAngular'])
                 questionsData.questions = newValue;
             }
          });
+
       }
    } // end of return
 }) // end of directive

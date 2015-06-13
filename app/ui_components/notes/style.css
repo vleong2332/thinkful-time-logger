@@ -1,58 +1,43 @@
-@font-face {
-   font-family: 'Lato Bold';
-   src: url('lato-bold-webfont.woff') format('woff');
+.wrapper-notes {
+   font-family: 'Yantramanav Light', Helvetica, sans-serif;
 }
-@font-face {
-   font-family: 'Josefin Sans';
-   src: url('josefinsans-regular-webfont.woff') format('woff');
-}
-
-#notes-wrapper {
-   width: 800px;
-   position: relative;
-   font-family: 'Josefin Sans', 'Helvetica Neue', Helvetica;
-}
-#notes-wrapper::after {
-   content: '';
-   display: block;
-   clear: both;
-}
-#notes-wrapper h1 {
-   font-family: 'Lato Bold', 'Helvetica Neue', Helvetica;
-   font-size: 1.5em;
-}
-#notes-wrapper .btn-toolbar {
+.btn-toolbar {
    padding: 0.5em 0.5em;
-   background-color: #F0F0F0;
+   background-color: #CACACA;
    font-family: 'Lato Bold', 'Helvetica Neue', Helvetica;
+   border-radius: 5px 5px 0 0;
 }
-#notes-wrapper .btn-group {
-   margin-bottom: 0.2em;
+.btn-group:first-child {
+   margin-left: 0;
 }
-/*#notes-wrapper .btn-group:last-child {
-   position: absolute;
-   bottom: -30px;
-   right: -1px;
-   width: 220px;
+.btn-toolbar {
+   margin-left: 0;
 }
-#notes-wrapper .btn-group:last-child div {
-   display: inline-block;
-}*/
-#notes-wrapper .btn {
+.btn {
    padding: 3px 6px;
 }
-#notes-wrapper .ta-editor.ta-html, .ta-scroll-window.form-control {
+.btn.active {
+   box-shadow: inset 0 3px 5px rgba(52,118,255,.5);
+}
+.wrapper-notes .form-control {
+   border-radius: 0 0 5px 5px;
+}
+.wrapper-notes .ta-bind:focus {
+   outline: none;
+}
+.ta-root.focussed > .ta-scroll-window.form-control {
+   outline: none;
+   background-color: #FEFEDE;
+}
+.wraper-notes .ta-editor.ta-html, .ta-scroll-window.form-control {
    height: 420px;
    overflow: auto;
    font-family: inherit;
    font-size: 110%;
 }
-#notes-wrapper .ta-scroll-window > .ta-bind {
+.ta-scroll-window > .ta-bind {
    height: 100%;
 }
-#notes-wrapper .ta-scroll-window > .ta-bind:focus {
-   outline: none;
-}
-div[id^='taTextElement'].placeholder-text::before {
-   color: #BABABA;
+.placeholder-text::before {
+   color: #CACACA;
 }

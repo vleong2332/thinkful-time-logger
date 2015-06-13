@@ -1,107 +1,31 @@
-@font-face {
-   font-family: 'Lato Bold';
-   src: url('lato-bold-webfont.woff') format('woff');
-}
-@font-face {
-   font-family: 'Josefin Sans';
-   src: url('josefinsans-regular-webfont.woff') format('woff');
-}
-
-#timer-container {
-   position: relative;
-   width: 320px;
+.wrapper-timer {
+   min-width: 285px;
    padding: 25px;
-   border: 1px solid #CACACA;
-   border-radius: 5px;
-   /*background-color: #F7F7F7;
-*/   text-align: center;
+   text-align: center;
    font-family: 'Lato Bold', Arial ,sans-serif;
 }
-#timer-time {
-   font-size: 4.3em;
+.jumbo-text {
+   font-size: 400%;
 }
-#timer-button {
-   width: 150px;
-   padding: 0.5em;
-   border: 0;
-   border-radius: 3px;
-   background-color: #3476FF;
-   color: #EEE;
-   font-size: 1.25em;
-   font-family: 'Lato Bold', Arial ,sans-serif;
+.wrapper-timer .timer-button {
+   width: 220px;
+   padding-top: 0.25em;
+   padding-bottom: 0.25em;
+   position: relative;
 }
-#timer-button:hover {
-   background-color: #9ABBFF;
-}
-#timer-reset {
-   position: absolute;
-   right: 2.5em;
-   bottom: 1.9em;
+.wrapper-timer .timer-reset {
    width: 20px;
    height: 20px;
-   border: 0;
-   padding: 0;
-   opacity: 0.35;
+   display: block;
+   margin: 1em auto 0;
    background-image: url('reset_arrow.svg');
-   background-size: 100%;
-   background-color: transparent;
+   opacity: 0.35;
+   transition: opacity ease 0.15s;
 }
-#timer-reset:hover {
+.wrapper-timer .timer-reset:hover {
    opacity: 0.85;
 }
-#timer-button, #timer-reset {
-   cursor: pointer;
-}
-#timer-button:focus, #timer-reset:focus {
-   outline: none;
-}
-#timer-reset-confirm {
-   position: absolute;
-   right: -2.25em;
-   bottom: -5.6em;
-   background-color: #666;
-   padding: 1em 1.5em;
-   text-align: center;
-   border-radius: 5px;
-   z-index: 10000;
-}
-#timer-reset-confirm::before {
-   content: '';
-   display: block;
-   position: absolute;
-   border-style: solid;
-   border-width: 10px;
-   border-color: transparent transparent #666 transparent;
-   left: 73px;
-   top: -20px;
-}
-#timer-reset-confirm p {
-   margin: 0;
-   color: #F7F7F7;
-   font-size: 1.25em;
-   font-family: 'Josefin Sans', Arial ,sans-serif;
-   margin-bottom: 0.5em;
-}
-#timer-reset-yes, #timer-reset-no {
-   padding: 0.5em 0.8em;
-   border: 0;
-   border-radius: 3px;
-   color: #EEE;
-   font-size: 1em;
-   font-family: 'Lato Bold', Arial ,sans-serif;
-   cursor: pointer;
-}
-#timer-reset-yes {
-   background-color: #3476FF;
-   margin-right: 0.35em;
-}
-#timer-reset-yes:hover {
-   background-color: #9ABBFF;
-}
-#timer-reset-no {
-   background-color: #E43D3E;
-   margin-left: 0.35em;
-}
-#timer-reset-no:hover {
-   background-color: #EE4D4E;
+.wrapper-timer .popup {
+   top: 97%;
+   left: 43.5%;
 }

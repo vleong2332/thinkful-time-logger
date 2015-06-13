@@ -1,6 +1,17 @@
-<div id="change-date-container">
-   <p>Change to </p>
-   <input name="new-date" type="date" value="{{ data.date }}" />
-   <button id="change-date-yes" reset="reset" ng-click="changeDate(); toggleChangePanel();">Yes</button>
-   <button id="change-date-no" ng-click="toggleChangePanel()">No</button>
+<div id="change-date-popup" class="popup popup-shadow">
+
+   <p>Change to</p>
+
+   <input name="new-date" class="input input-date" type="date"
+    value="{{ data.date }}" />
+
+   <button id="change-date-yes" class="button button-yes button-blue"
+    reset="reset"
+    ng-click="changeDate(); toggleChangePanel();"
+   >Yes</button>
+
+   <button id="change-date-no" class="button button-no button-red"
+    ng-click="toggleChangePanel()"
+   >No</button>
+
 </div>

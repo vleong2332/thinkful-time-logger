@@ -24,7 +24,7 @@ angular.module('dateComponent', [])
          // Scope API
          $scope.toggleChangePanel = function() {
                                        $scope.changePanelView = !$scope.changePanelView;
-                                    }
+                                    };
       },
       //
       link: function(scope, element, attrs) {
@@ -38,7 +38,7 @@ angular.module('dateComponent', [])
 
          // Private functions
          function pad(number, thickness) {
-            var number    = number    || 0;
+            var number = number    || 0;
             var thickness = thickness || 2;
             var padNeeded = thickness - number.toString().length;
             var pad = '';
@@ -59,7 +59,7 @@ angular.module('dateComponent', [])
          });
 
       } // end of link
-   } // end of return
+   }; // end of return
 }) // end of directive
 
 //------------------------------------
@@ -76,7 +76,7 @@ angular.module('dateComponent', [])
             $scope.data.date = $element.find('input')[0].value;
          };
       }
-   }
+   };
 }) // end of directive
 
 ; // end of module

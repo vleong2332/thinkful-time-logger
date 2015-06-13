@@ -11,9 +11,9 @@ header h1 {
    margin: 0;
 }
 
-/*#vl-date #date {
+#vl-date #date {
    font-size: 1.5em;
-}*/
+}
 
 #main-wrapper {
    width: 1200px;
@@ -22,7 +22,7 @@ header h1 {
    padding: 0 1.5em;
    position: relative;
 }
-/*#vl-notes {
+#vl-notes {
    position: absolute;
    top: -13px;
    left: 370px;
@@ -37,7 +37,7 @@ header h1 {
    position: absolute;
    right: 30px;
    top: 502px;
-}*/
+}
 button[name="rec-n-end-button"] {
    width: 60px;
    height: 60px;
@@ -71,8 +71,8 @@ footer {
    height: 100px;
    margin-top: 300px;
 }
-/*
+
 #vl-notes .btn-toolbar {
    margin-left: 0;
    border-radius: 5px;
-}*/
+}
