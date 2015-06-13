@@ -18,6 +18,8 @@ Note: Allow popup for google authentication if it's the first time, or the first
 - Logo for the header
 - Favicon
 - Footer content
+- Make save button more obivous
+- Add instructions overlay
 
 ##### Date
 
@@ -36,3 +38,5 @@ Note: Allow popup for google authentication if it's the first time, or the first
 - Setup a backend to receive payload from Github API automatically
 
 ##### History
+
+- Distinguish clickables from the un-clickables
