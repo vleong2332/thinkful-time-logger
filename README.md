@@ -1,4 +1,4 @@
-# thinkful-time-logger
+# Thinkful-Time-Logger
 Angular JS capstone project that could possibly be  used for personal study sessions.
 
 Study smarter, not harder. This app allows student to keep track of and organize their study time, notes, questions, and GitHub commits all in one place.
@@ -10,7 +10,7 @@ Note: Allow popup for google authentication if it's the first time, or the first
 
 ##### General
 
-- Index on root to redirect to app
+- ~~Index on root to redirect to app~~ 6/13/15
 
 ##### Main app
 
