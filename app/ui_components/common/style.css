@@ -167,6 +167,7 @@
 .component-body {
   height: 150px;
   font-family: 'Yantramanav Light', Helvetica, sans-serif;
+  overflow: auto;
 }
 
 
