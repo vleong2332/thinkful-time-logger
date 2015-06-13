@@ -40,3 +40,4 @@ Note: Allow popup for google authentication if it's the first time, or the first
 ##### History
 
 - Distinguish clickables from the un-clickables
+- Format time to Xh XXm format
