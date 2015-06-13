@@ -11,6 +11,7 @@ Note: Allow popup for google authentication if it's the first time, or the first
 ##### General
 
 - ~~Index on root to redirect to app~~ 6/13/15
+- ~~Give credit where it belongs~~ 6/13/15
 
 ##### Main app
 
@@ -29,13 +30,14 @@ Note: Allow popup for google authentication if it's the first time, or the first
 
 ##### Notes
 
-- TextAngular issue of pasting unneccesary style
+- Watch for updateo on TextAngular issue of pasting unneccesary style
 
 ##### Questions
 
 ##### GH Pushes
 
 - Setup a backend to receive payload from Github API automatically
+- Store GH username with the session
 
 ##### History
 

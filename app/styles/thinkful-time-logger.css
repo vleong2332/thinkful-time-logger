@@ -1,3 +1,6 @@
+body {
+   font-family: 'Yantramanav Light', Helvetica, sans-serif;
+}
 header {
    min-width: 100%;
    background-color: #3476FF;
@@ -11,9 +14,9 @@ header h1 {
    margin: 0;
 }
 #main-wrapper {
-   width: 1200px;
+   min-width: 1135px;
+   max-width: 1600px;
    margin: 0 auto;
-   /*padding: 0 1.5em;*/
    position: relative;
 }
 
@@ -65,6 +68,21 @@ button[name="rec-n-end-button"]:focus {
 footer {
    min-width: 100%;
    background-color: #3476FF;
-   height: 100px;
+   padding: 3em;
    margin-top: 100px;
+   color: #FFF;
+}
+footer .credit-image {
+   max-width: 100px;
+   filter: grayscale(100%);
+   -webkit-filter: grayscale(100%);
+}
+footer h3 {
+   font-family: 'Yantramanav Medium', Helvetica, sans-serif;
+   margin: 0.75em 0;
+}
+footer a {
+   color: #9ABBFF;
+   text-decoration: none;
+   border-bottom: 1px dotted #9ABBFF;
 }
