@@ -10,34 +10,31 @@ header h1 {
    color: #FFF;
    margin: 0;
 }
-
-/*#vl-date #date {
-   font-size: 1.5em;
-}*/
-
 #main-wrapper {
    width: 1200px;
    margin: 0 auto;
-   /*border: 1px solid #BABABA;*/
-   padding: 0 1.5em;
+   /*padding: 0 1.5em;*/
    position: relative;
 }
-/*#vl-notes {
-   position: absolute;
-   top: -13px;
-   left: 370px;
+
+.col {
+   display: inline-block;
+   float: left;
+   margin-left: 1em;
+   margin-right: 1em;
 }
-#vl-questions #questions-wrapper {
-   width: 320px;
+.col::after {
+   content: '';
+   display: block;
+   clear: both;
 }
-#vl-questions #questions-wrapper div.question {
-   width: 100%;
+.col-big {
+   width: calc(70% - 2em);
 }
-#vl-history {
-   position: absolute;
-   right: 30px;
-   top: 502px;
-}*/
+.col-small {
+   width: calc(30% - 2em);
+}
+
 button[name="rec-n-end-button"] {
    width: 60px;
    height: 60px;
@@ -69,10 +66,5 @@ footer {
    min-width: 100%;
    background-color: #3476FF;
    height: 100px;
-   margin-top: 300px;
+   margin-top: 100px;
 }
-/*
-#vl-notes .btn-toolbar {
-   margin-left: 0;
-   border-radius: 5px;
-}*/

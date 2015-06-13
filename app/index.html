@@ -47,7 +47,7 @@
       <h1>Thinkful Time Logger</h1>
    </header>
 
-   <section id="main-wrapper">
+   <section id="main-wrapper" class="clearfix">
 
       <div class="col col-small col-left">
          <div id="date-component" class="component">
@@ -55,6 +55,9 @@
          </div>
          <div id="timer-component" class="component">
             <vl-timer></vl-timer>
+         </div>
+         <div id="questions-component" class="component">
+            <vl-questions></vl-questions>
          </div>
          <div id="gh-pushes-component" class="component">
             <vl-gh-pushes></vl-gh-pushes>
@@ -64,9 +67,6 @@
       <div class="col col-big col-right">
          <div id="notes-component" class="component">
             <vl-notes></vl-notes>
-         </div>
-         <div id="questions-component" class="component">
-            <vl-questions></vl-questions>
          </div>
          
          <div id="history-component" class="component">
