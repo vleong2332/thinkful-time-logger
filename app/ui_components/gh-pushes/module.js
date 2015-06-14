@@ -4,6 +4,7 @@ angular.module('ghPushesComponent', [])
 
 .factory('ghPushesData', function() {
    return {
+      username: '',
       pushes: []
    }
 })
@@ -53,6 +54,7 @@ angular.module('ghPushesComponent', [])
 
          // Private functions
          function githubRequest(username) {
+            ghPushesData.username = username;
             scope.refreshing = true;
             getGithubPushes(username)
             .then(function(result) {
@@ -107,6 +109,11 @@ angular.module('ghPushesComponent', [])
             }
          });
 
+         //
+         scope.$watch(function() { return ghPushesData.username; }, function(newValue) {
+            scope.ghUsername = newValue;
+            if (scope.ghUsername) githubRequest(newValue);
+         });
       } // end of link
    } // end of return
 }) // end of directive

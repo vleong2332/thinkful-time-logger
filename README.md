@@ -37,7 +37,7 @@ Note: Allow popup for google authentication if it's the first time, or the first
 ##### GH Pushes
 
 - Setup a backend to receive payload from Github API automatically
-- Store GH username with the session
+- ~~Store GH username with the session~~ 6/14/15
 
 ##### History
 

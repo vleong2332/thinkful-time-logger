@@ -6,20 +6,24 @@ angular.module('thinkfulTimeLogger', ['ngAnimate', 'firebase', 'timerComponent',
 
 //--------------------------------------------------
 
-.controller('rootCtrl', function($scope, $firebaseAuth, $firebaseObject, FIREBASE_DB, timerData, dateData, notesData, questionsData, ghPushesData) {
+.controller('rootCtrl', function($scope, $firebaseAuth, $firebaseObject, FIREBASE_DB, timerData, dateData, notesData, questionsData, ghPushesData, historyData) {
    var ref = new Firebase(FIREBASE_DB);
 
-   $scope.debug    = true;
+   // $scope.debug    = true;
    $scope.authObj  = $firebaseAuth(ref);
    $scope.authData = $scope.authObj.$getAuth();
    $scope.dbSave = {
       success: false,
       error: false
-   }
-   // $scope.history = $firebaseObject(ref);
+   };
 
+   // User authentication
    if ($scope.authData) {
       console.log('Already logged in as:', $scope.authData.uid);
+      //
+      $scope.$watch(function() { return historyData.lastGHUsername; }, function(newValue, oldValue) {
+         ghPushesData.username = newValue;
+      });
    } else {
       console.log('Not logged in. Logging in now...');
       $scope.authObj.$authWithOAuthPopup('google')
@@ -43,7 +47,8 @@ angular.module('thinkfulTimeLogger', ['ngAnimate', 'firebase', 'timerComponent',
          id       : $scope.authData.uid + Date.now(),
          user     : {
                        uid        : $scope.authData.uid,
-                       displayName: $scope.authData.google.displayName
+                       displayName: $scope.authData.google.displayName,
+                       gh         : ghPushesData.username
                     },
          date     : {
                        logged : dateData.date,
@@ -52,7 +57,7 @@ angular.module('thinkfulTimeLogger', ['ngAnimate', 'firebase', 'timerComponent',
          time     : timerData,
          notes    : notesData.htmlText,
          questions: questionsData.questions,
-         pushes   : ghPushesData.pushes
+         pushes   : ghPushesData.pushes,
       };
 
       // Save object into database

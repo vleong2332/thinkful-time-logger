@@ -6,7 +6,15 @@ angular.module('historyComponent', ['firebase'])
 
 //----------------------------------------------------
 
-.directive('vlHistory', function(FIREBASE_DB, $firebaseObject, $firebaseAuth) {
+.factory('historyData', function() {
+   return {
+      lastGHUsername: ''
+   }
+})
+
+//----------------------------------------------------
+
+.directive('vlHistory', function(FIREBASE_DB, $firebaseObject, $firebaseAuth, historyData) {
    return {
       restrict: 'EA',
       replace: true,
@@ -19,6 +27,11 @@ angular.module('historyComponent', ['firebase'])
          var authData = authObj.$getAuth();
 
          $scope.history  = $firebaseObject(ref);
+         $scope.unwatch = $scope.history.$watch(function() {
+            $scope.history = $scope.userHistory($scope.history);
+            historyData.lastGHUsername = $scope.history[0].entry.user.gh;
+            $scope.unwatch();
+         });
          $scope.historyDetail = placeholder;
          $scope.isPlaceholder = true;
 
@@ -82,6 +95,7 @@ angular.module('historyComponent', ['firebase'])
             }
             return array;
          }; // end of userHistory()
+
       } // end of controller
    }; // end of return
 }) // end of directive
