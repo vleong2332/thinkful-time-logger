@@ -9,7 +9,7 @@ angular.module('thinkfulTimeLogger', ['ngAnimate', 'firebase', 'timerComponent',
 .controller('rootCtrl', function($scope, $firebaseAuth, $firebaseObject, FIREBASE_DB, timerData, dateData, notesData, questionsData, ghPushesData, historyData) {
    var ref = new Firebase(FIREBASE_DB);
 
-   // $scope.debug    = true;
+   $scope.debug    = true;
    $scope.authObj  = $firebaseAuth(ref);
    $scope.authData = $scope.authObj.$getAuth();
    $scope.dbSave = {

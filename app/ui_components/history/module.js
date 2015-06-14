@@ -116,4 +116,12 @@ angular.module('historyComponent', ['firebase'])
    };
 })
 
+//----------------------------------------------------
+
+.filter('noHTMLTags', function() {
+   return function(text) {
+      return text.replace(/<[\/]?[a-z0-9\=\:\"\;\(\)\,]*[\/]?>/ig, '');
+   };
+})
+
 ;

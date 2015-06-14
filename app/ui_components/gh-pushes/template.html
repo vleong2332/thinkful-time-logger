@@ -21,7 +21,7 @@
       </div>
       <div class="list-entry" ng-repeat="push in data.pushes">
          <p class="gh-pushes-message">
-            <a target="_blank" ng-href="https://github.com/{{ push.repo.name }}/commit/{{ push.payload.head }}">
+            <a target="_blank" ng-href="https://github.com/{{ push.repo.name }}/commit/{{ push.payload.head }}" class="link">
                {{ push.payload.commits[0].message }}
             </a>
          </p>
