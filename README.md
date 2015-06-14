@@ -26,7 +26,7 @@ Note: Allow popup for google authentication if it's the first time, or the first
 
 ##### Timer
 
-- Fix popup location on smaller size container
+- ~~Fix popup location on smaller size container~~ 6/13/15
 
 ##### Notes
 
