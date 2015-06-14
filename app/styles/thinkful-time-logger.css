@@ -1,6 +1,7 @@
 /*   GENERAL   */
 body {
    font-family: 'Yantramanav Light', Helvetica, sans-serif;
+   position: relative;
 }
 
 
@@ -11,6 +12,26 @@ header {
    text-align: center;
    padding: 1.5em;
    margin-bottom: 1.5em;
+   position: fixed;
+   z-index: 99999;
+}
+header::after {
+   content: '';
+   display: block;
+   width: 100%;
+   position: absolute;
+   height: 25px;
+   top: 100%;
+   left: 0;
+   background-color: red;
+   background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6+ */
+   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
+   background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
+   background: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
+   background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* IE10+ */
+   background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* W3C */
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+
 }
 header img {
    width: 39px;
@@ -32,6 +53,7 @@ header h1 {
 /*   LAYOUT   */
 #main-wrapper {
    /*min-width: 1135px;*/
+   padding-top: 100px;
    max-width: 1600px;
    margin: 0 auto;
    position: relative;
@@ -59,29 +81,31 @@ header h1 {
 
 /*   SAVE BUTTON   */
 button[name="rec-n-end-button"] {
-   width: 60px;
-   height: 60px;
-   background-color: #3476FF;
+   width: 39px;
+   height: 39px;
+   background-color: inherit;
    border: none;
+   float: right;
+   padding: 0;
    border-radius: 50%;
-   position: fixed;
+   border: 1px solid #FFF;
+   /*position: fixed;
    top: 64px;
-   right: -32px;
+   right: -32px;*/
    background-image: url('../img/save.svg');
-   background-size: 50%;
+   background-size: 75%;
    background-repeat: no-repeat;
    background-position: center;
-   -webkit-box-shadow: 0px 0px 10px 1px #555;
+   /*-webkit-box-shadow: 0px 0px 10px 1px #555;
    -moz-box-shadow: 0px 0px 10px 1px #555;
-   box-shadow: 0px 0px 10px 1px #555;
+   box-shadow: 0px 0px 10px 1px #555;*/
    transition: all ease 0.5s;
 }
 button[name="rec-n-end-button"]:hover {
-   background-color: #9ABBFF;
-   top: 62.5px;
-   right: -5px;
-   width: 65px;
-   height: 65px;
+   border-radius: 3px;
+   border-color: transparent;
+   background-size: 100%;
+   /*background-color: #9ABBFF;*/
 }
 button[name="rec-n-end-button"]:focus {
    outline: none;

@@ -19,7 +19,7 @@ Note: Allow popup for google authentication if it's the first time, or the first
 - ~~Logo for the header~~ 6/13/15
 - ~~Favicons~~ 6/13/15
 - Footer content
-- Make save button more obivous
+- ~~Make save button more obivous~~ 6/14/15
 - Add instructions overlay
 
 ##### Date
