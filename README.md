@@ -16,7 +16,7 @@ Note: Allow popup for google authentication if it's the first time, or the first
 ##### Main app
 
 - User option to login or logout
-- Logo for the header
+- ~~Logo for the header~~ 6/13/15
 - ~~Favicons~~ 6/13/15
 - Footer content
 - Make save button more obivous

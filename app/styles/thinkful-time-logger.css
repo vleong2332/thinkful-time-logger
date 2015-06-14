@@ -12,6 +12,16 @@ header {
    padding: 1.5em;
    margin-bottom: 1.5em;
 }
+header img {
+   width: 39px;
+   float: left;
+   border: 1px solid #FFF;
+   -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+       -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+           border-radius: 5px;
+}
 header h1 {
    font-family: 'Lato Bold', 'Helvetica Neue', Helvetica;
    color: #FFF;
