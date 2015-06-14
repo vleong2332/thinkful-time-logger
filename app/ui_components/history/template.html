@@ -13,22 +13,15 @@
             {{ log.entry.date.logged }}
          </div>
          <div class="column time">
-            {{ log.entry.time.totalTime || '0' }}
+            {{ log.entry.time.totalTime || '0' | lengthOfTime }}
          </div>
          <div class="column notes" ng-click="expandNotes(log.entry.notes)" ng-bind-html ="log.entry.notes">
-            <!-- <div class="notes-expanded popup">{{ entry.entry.notes || 'none' }}</div> -->
          </div>
          <div class="column questions" ng-click="expandQuestions(log.entry.questions)">
             {{ log.entry.questions.length  || '0' }}
-            <!-- <div class="questions-expanded popup">
-               <p ng-repeat="question in entry.entry.questions">{{ question }}</p>
-            </div> -->
          </div>
          <div class="column pushes" ng-click="expandPushes(log.entry.pushes)">
             {{ log.entry.pushes.length  || '0' }}
-            <!-- <div class="pushes-expanded popup">
-               <p ng-repeat="push in entry.entry.pushes">{{ push.payload.commits[0].message }}</p>
-            </div> -->
          </div>
       </div>
    </div>

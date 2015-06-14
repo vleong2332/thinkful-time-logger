@@ -31,7 +31,7 @@ header h1 {
 
 /*   LAYOUT   */
 #main-wrapper {
-   min-width: 1135px;
+   /*min-width: 1135px;*/
    max-width: 1600px;
    margin: 0 auto;
    position: relative;
@@ -49,9 +49,11 @@ header h1 {
 }
 .col-big {
    width: calc(70% - 2em);
+   min-width: 712px;
 }
 .col-small {
    width: calc(30% - 2em);
+   min-width: 340.5px;
 }
 
 

@@ -81,9 +81,25 @@ angular.module('historyComponent', ['firebase'])
                });
             }
             return array;
-         };
-      }
-   }
+         }; // end of userHistory()
+      } // end of controller
+   }; // end of return
+}) // end of directive
+
+//----------------------------------------------------
+
+.filter('lengthOfTime', function() {
+   return function(seconds) {
+      var input = seconds || 0;
+      var hh = Math.round((input / 3600) % 99);
+      var mm = Math.round((input / 60) % 60);
+      
+      var output = '';
+      if (hh) { output += hh + 'h '; }
+      output += mm + 'm';
+      
+      return output;
+   };
 })
 
 ;

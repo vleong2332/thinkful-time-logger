@@ -32,16 +32,14 @@
    /*overflow: hidden;*/
    margin-bottom: 0.5em;
 }
-.component-header .dates {
-   margin-left: 0.3em;
-}
 .dates {
    width: 75px;
    text-align: center;
 }
 .time {
    width: 55px;
-   text-align: center;
+   text-align: right;
+   padding-right: 0.3em;
 }
 .notes {
    width: 300px;
