@@ -1,6 +1,10 @@
+/*   GENERAL   */
 body {
    font-family: 'Yantramanav Light', Helvetica, sans-serif;
 }
+
+
+/*   HEADER   */
 header {
    min-width: 100%;
    background-color: #3476FF;
@@ -13,13 +17,15 @@ header h1 {
    color: #FFF;
    margin: 0;
 }
+
+
+/*   LAYOUT   */
 #main-wrapper {
    min-width: 1135px;
    max-width: 1600px;
    margin: 0 auto;
    position: relative;
 }
-
 .col {
    display: inline-block;
    float: left;
@@ -38,6 +44,8 @@ header h1 {
    width: calc(30% - 2em);
 }
 
+
+/*   SAVE BUTTON   */
 button[name="rec-n-end-button"] {
    width: 60px;
    height: 60px;
@@ -52,6 +60,7 @@ button[name="rec-n-end-button"] {
    background-repeat: no-repeat;
    background-position: center;
    -webkit-box-shadow: 0px 0px 10px 1px #555;
+   -moz-box-shadow: 0px 0px 10px 1px #555;
    box-shadow: 0px 0px 10px 1px #555;
    transition: all ease 0.5s;
 }
@@ -65,6 +74,9 @@ button[name="rec-n-end-button"]:hover {
 button[name="rec-n-end-button"]:focus {
    outline: none;
 }
+
+
+/*   FOOTER   */
 footer {
    min-width: 100%;
    background-color: #3476FF;
@@ -74,8 +86,9 @@ footer {
 }
 footer .credit-image {
    max-width: 100px;
-   filter: grayscale(100%);
    -webkit-filter: grayscale(100%);
+   -moz-filter: graysclae(100%);
+   filter: grayscale(100%);
 }
 footer h3 {
    font-family: 'Yantramanav Medium', Helvetica, sans-serif;
@@ -85,4 +98,10 @@ footer a {
    color: #9ABBFF;
    text-decoration: none;
    border-bottom: 1px dotted #9ABBFF;
+}
+a:hover {
+   text-decoration: none;
+}
+footer a:hover {
+   color: #FFF;
 }

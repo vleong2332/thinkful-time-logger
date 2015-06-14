@@ -27,5 +27,10 @@
 }
 .wrapper-timer .popup {
    top: 97%;
-   left: 43.5%;
+   left: calc(50% - 76.38px);
+   -webkit-transform: translateX(-50%);
+   -moz-transform: translateX(-50%);
+   -ms-transform: translateX(-50%);
+   -o-transform: translateX(-50%);
+   transform: translateX(-50%);
 }
