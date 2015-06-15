@@ -107,7 +107,7 @@ angular.module('timerComponent', [])
       replace: true,
       scope: true,
       templateUrl: './ui_components/timer/reset-confirm-templ.html'
-   }
+   };
 }) // end of directive
 
 //------------------------------------

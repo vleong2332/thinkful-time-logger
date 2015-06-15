@@ -12,10 +12,11 @@ angular.module('thinkfulTimeLogger', ['ngAnimate', 'firebase', 'timerComponent',
    $scope.debug    = true;
    $scope.authObj  = $firebaseAuth(ref);
    $scope.authData = $scope.authObj.$getAuth();
-   $scope.dbSave = {
+   $scope.dbSave   = {
       success: false,
       error: false
    };
+   $scope.showHelp = false;
 
    // User authentication
    if ($scope.authData) {
@@ -72,7 +73,17 @@ angular.module('thinkfulTimeLogger', ['ngAnimate', 'firebase', 'timerComponent',
             $scope.dbSaveError = true;
          }
       );
-   }
+   };
+})
+
+//--------------------------------------------------
+
+.directive('helpScreen', function() {
+   return {
+      restrict: 'EA',
+      replace: true,
+      templateUrl: 'templates/help.html'
+   };
 })
 
 ;

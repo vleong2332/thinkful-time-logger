@@ -66,10 +66,15 @@
 <body>
 
    <header>
-      <img src="img/header_logo_180x180.png" alt="Thinkful Time Logger Logo" />
-      <button name="rec-n-end-button" ng-click="recAndEndSession()" title="Save and Reload"></button>
-      <h1>Thinkful Time Logger</h1>
+      <div class="holder">
+         <img src="img/header_logo_180x180.png" alt="Thinkful Time Logger Logo" />
+         <button name="rec-n-end-button" class="header-buttons" ng-click="recAndEndSession()" title="Save and Reload"></button>
+         <button name="help-button" class="header-buttons" ng-click="showHelp = true" title="Save and Reload"></button>
+         <h1>Thinkful Time Logger</h1>
+      </div>
    </header>
+
+   <help-screen ng-show="showHelp"></help-screen>
 
    <section id="main-wrapper" class="clearfix">
 
