@@ -105,7 +105,7 @@ angular.module('historyComponent', ['firebase'])
 .filter('lengthOfTime', function() {
    return function(seconds) {
       var input = seconds || 0;
-      var hh = Math.round((input / 3600) % 99);
+      var hh = Math.floor((input / 3600) % 99);
       var mm = Math.round((input / 60) % 60);
       
       var output = '';
