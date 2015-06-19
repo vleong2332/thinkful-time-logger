@@ -18,7 +18,7 @@ Note: Allow popup for google authentication if it's the first time, or the first
 - User option to login or logout
 - ~~Logo for the header~~ 6/13/15
 - ~~Favicons~~ 6/13/15
-- Footer content
+- ~~Footer content~~ 6/14/15
 - ~~Make save button more obivous~~ 6/14/15
 - ~~Add instructions overlay~~ 6/14/15
 
